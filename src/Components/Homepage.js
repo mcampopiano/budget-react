@@ -1,7 +1,7 @@
 import React from 'react';
 import {
-    Table, Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Button
+    Table, Card, CardText, CardBody,
+    CardTitle, Button
 } from 'reactstrap';
 
 export const Homepage = (props) => {
@@ -10,7 +10,7 @@ export const Homepage = (props) => {
             <div className="table income">
                 <section className="entries">
                     <h1>Income</h1>
-                    <Table striped>
+                    <Table hover>
                         <thead>
                             <tr>
                                 <th>#</th>

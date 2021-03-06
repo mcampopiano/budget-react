@@ -1,5 +1,8 @@
 import React from 'react';
-import { Table } from 'reactstrap';
+import {
+    Table, Card, CardText, CardBody,
+    CardTitle, Button, ButtonGroup
+} from 'reactstrap';
 
 export const EnvelopeDetail = (props) => {
     return (
@@ -36,7 +39,31 @@ export const EnvelopeDetail = (props) => {
                         </tr>
                     </tbody>
                 </Table>
+                <Button color="success">Add purchase</Button>
             </section>
+            <section className="totals">
+                <Card>
+                    <CardTitle tag="h5">Budget</CardTitle>
+                    <CardBody>
+                        <CardText>$400</CardText>
+                    </CardBody>
+                </Card>
+                <Card>
+                    <CardTitle tag="h5">Actual</CardTitle>
+                    <CardBody>
+                        <CardText>${58.67+99.99+15.51}</CardText>
+                    </CardBody>
+                </Card>
+                <Card>
+                    <CardTitle tag="h5">Remaining</CardTitle>
+                    <CardBody>
+                        <CardText>${400-(58.67+99.99+15.51)}</CardText>
+                    </CardBody>
+                </Card>
+            </section>
+            <ButtonGroup>
+                <Button color="danger">Delete envelope</Button>
+            </ButtonGroup>
         </div>
     );
 }
