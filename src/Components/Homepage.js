@@ -33,7 +33,7 @@ export const Homepage = (props) => {
                             </tr>
                         </tbody>
                     </Table>
-                    <Button color="success">Add deposit</Button>
+                    <Button color="success" onClick={() => history.push("/deposits/form")}>Add deposit</Button>
                 </section>
                 <section className="totals">
                     <Card>
