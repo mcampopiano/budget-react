@@ -21,7 +21,7 @@ export const DepositForm = (props) => {
 
             <ButtonGroup>
                 <Button color="success">Submit</Button>
-                <Button color="danger">Cancel</Button>
+                <Button color="danger" onClick={() => history.goBack()}>Cancel</Button>
             </ButtonGroup>
         </Form>
     );
