@@ -1,10 +1,12 @@
 import React from 'react';
+import { useHistory } from 'react-router';
 import {
     Table, Card, CardText, CardBody,
     CardTitle, Button, ButtonGroup
 } from 'reactstrap';
 
 export const EnvelopeDetail = (props) => {
+    const history = useHistory()
     return (
         <div className="table envelope">
             <h1>Groceries</h1>
@@ -39,7 +41,8 @@ export const EnvelopeDetail = (props) => {
                         </tr>
                     </tbody>
                 </Table>
-                <Button color="success">Add purchase</Button>
+                <Button color="success"
+                onClick={() => history.push("/envelopes/purchase/form")}>Add purchase</Button>
             </section>
             <section className="totals">
                 <Card>
