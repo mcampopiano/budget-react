@@ -1,10 +1,12 @@
 import React from 'react';
+import { useHistory } from 'react-router';
 import {
     Table, Card, CardText, CardBody,
     CardTitle, Button
 } from 'reactstrap';
 
 export const Homepage = (props) => {
+    const history = useHistory()
     return (
         <>
             <div className="table income">
@@ -74,6 +76,7 @@ export const Homepage = (props) => {
                         </CardBody>
                     </Card>
                 </section>
+                <Button onClick={() => history.push("/budgets/form")}>Create new budget</Button>
             </div>
         </>
     );
