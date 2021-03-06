@@ -47,9 +47,11 @@ export const NavBar = (props) => {
                 </DropdownItem>
                                 </Link>
                                 <DropdownItem divider />
-                                <DropdownItem>
-                                    New envelope
+                                <Link to="/envelopes/form">
+                                    <DropdownItem>
+                                        New envelope
                 </DropdownItem>
+                                </Link>
                             </DropdownMenu>
                         </UncontrolledDropdown>
                     </Nav>
