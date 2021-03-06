@@ -1,5 +1,6 @@
 import React from "react"
 import {Route} from "react-router-dom"
+import { BudgetForm } from "./budgets/BudgetForm"
 import { EnvelopeDetail } from "./envelopes/EnvelopeDetail"
 import { EnvelopeForm } from "./envelopes/EnvelopeForm"
 import { PurchaseForm } from "./envelopes/PurchaseForm"
@@ -20,6 +21,9 @@ export const ApplicationViews = props => (
     </Route>
     <Route exact path="/envelopes/purchase/form">
         <PurchaseForm />
+    </Route>
+    <Route exact path="/budgets/form">
+        <BudgetForm />
     </Route>
     </>
 )
