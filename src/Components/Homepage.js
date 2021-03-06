@@ -47,6 +47,33 @@ export const Homepage = (props) => {
                         </CardBody>
                     </Card>
                 </section>
+                <section className="budget">
+                    <h2>Budget</h2>
+                    <Card>
+                        <CardTitle tag="h5">Total Budget</CardTitle>
+                        <CardBody>
+                            <CardText>$4,000</CardText>
+                        </CardBody>
+                    </Card>
+                    <Card>
+                        <CardTitle tag="h5">Total spent</CardTitle>
+                        <CardBody>
+                            <CardText>$2,307.97</CardText>
+                        </CardBody>
+                    </Card>
+                    <Card>
+                        <CardTitle tag="h5">Remaing budget</CardTitle>
+                        <CardBody>
+                            <CardText>$1692.03</CardText>
+                        </CardBody>
+                    </Card>
+                    <Card>
+                        <CardTitle tag="h5">Actual in - out</CardTitle>
+                        <CardBody>
+                            <CardText>$704.80</CardText>
+                        </CardBody>
+                    </Card>
+                </section>
             </div>
         </>
     );
