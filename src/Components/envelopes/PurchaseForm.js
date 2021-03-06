@@ -10,7 +10,7 @@ export const PurchaseForm = (props) => {
             </FormGroup>
             <FormGroup>
                 <Label for="examplePurchaseAmount">Amount</Label>
-                <Input type="number" name="purchaseAmount" id="examplePurchaseAmount" placeholder="e.g. 400.00" />
+                <Input type="number" name="purchaseAmount" id="examplePurchaseAmount" placeholder="e.g. 58.23" />
             </FormGroup>
             <FormGroup>
                 <Label for="dateOfPurchase">Date of purchase</Label>
