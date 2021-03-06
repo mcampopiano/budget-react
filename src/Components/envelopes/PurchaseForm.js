@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input, ButtonGroup } from 'reactstrap';
 
-export const EnvelopeForm = (props) => {
+export const PurchaseForm = (props) => {
     return (
         <Form>
             <FormGroup>
