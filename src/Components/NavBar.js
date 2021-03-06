@@ -1,60 +1,63 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  NavbarText
+    Collapse,
+    Navbar,
+    NavbarToggler,
+    NavbarBrand,
+    Nav,
+    NavItem,
+    NavLink,
+    UncontrolledDropdown,
+    DropdownToggle,
+    DropdownMenu,
+    DropdownItem,
+    NavbarText
 } from 'reactstrap';
 
 export const NavBar = (props) => {
-  const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
 
-  const toggle = () => setIsOpen(!isOpen);
+    const toggle = () => setIsOpen(!isOpen);
 
-  return (
-    <div>
-      <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">Home</NavbarBrand>
-        <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
-          <Nav className="me-auto" navbar>
-            <NavItem>
-              <NavLink href="#">Recurring bills</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="#">New Budget</NavLink>
-            </NavItem>
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                Envelopes
+    return (
+        <div>
+            <Navbar color="light" light expand="md">
+                <NavbarBrand href="/">Home</NavbarBrand>
+                <NavbarToggler onClick={toggle} />
+                <Collapse isOpen={isOpen} navbar>
+                    <Nav className="me-auto" navbar>
+                        <NavItem>
+                            <NavLink href="#">Recurring bills</NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink href="#">New Budget</NavLink>
+                        </NavItem>
+                        <UncontrolledDropdown nav inNavbar>
+                            <DropdownToggle nav caret>
+                                Envelopes
               </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem>
-                  Restaurants
+                            <DropdownMenu right>
+                                <DropdownItem>
+                                    Restaurants
                 </DropdownItem>
-                <DropdownItem>
-                  Groceries
+                                <Link to="/envelopes/groceries">
+                                    <DropdownItem>
+                                        Groceries
                 </DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>
-                  New envelope
+                                </Link>
+                                <DropdownItem divider />
+                                <DropdownItem>
+                                    New envelope
                 </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
-          </Nav>
-          <NavbarText>Log out</NavbarText>
-        </Collapse>
-      </Navbar>
-    </div>
-  );
+                            </DropdownMenu>
+                        </UncontrolledDropdown>
+                    </Nav>
+                    <NavbarText>Log out</NavbarText>
+                </Collapse>
+            </Navbar>
+        </div>
+    );
 }
 
 // export default Example;
