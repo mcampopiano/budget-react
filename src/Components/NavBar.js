@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import {
     Collapse,
     Navbar,
@@ -12,13 +12,16 @@ import {
     DropdownToggle,
     DropdownMenu,
     DropdownItem,
-    NavbarText
+    NavbarText,
+    Button
 } from 'reactstrap';
 
 export const NavBar = (props) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggle = () => setIsOpen(!isOpen);
+
+    const history = useHistory()
 
     return (
         <div>
@@ -55,7 +58,11 @@ export const NavBar = (props) => {
                             </DropdownMenu>
                         </UncontrolledDropdown>
                     </Nav>
-                    <NavbarText>Log out</NavbarText>
+                    <NavbarText ><Button color="danger"
+                    onClick={() => {
+                        localStorage.clear()
+                        history.push("/")
+                    }}>Log out</Button></NavbarText>
                 </Collapse>
             </Navbar>
         </div>
