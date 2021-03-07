@@ -16,6 +16,7 @@ export const Homepage = (props) => {
                         <thead>
                             <tr>
                                 <th>#</th>
+                                <th>Source</th>
                                 <th>Amount</th>
                                 <th>Date</th>
                             </tr>
@@ -23,11 +24,13 @@ export const Homepage = (props) => {
                         <tbody>
                             <tr>
                                 <th scope="row">1</th>
+                                <td>Paycheck</td>
                                 <td>$1,502.25</td>
                                 <td>03/01/2021</td>
                             </tr>
                             <tr>
                                 <th scope="row">2</th>
+                                <td>Paycheck</td>
                                 <td>$1,510.52</td>
                                 <td>03/07/2021</td>
                             </tr>
