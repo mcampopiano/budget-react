@@ -3,7 +3,7 @@ import { useHistory } from 'react-router';
 import { Button, Form, FormGroup, Label, Input, ButtonGroup } from 'reactstrap';
 import { BudgetContext } from './BudgetProvider';
 
-export const BudgetForm = (props) => {
+export const BudgetForm = () => {
     const {createBudget} = useContext(BudgetContext)
     const history = useHistory()
 
@@ -17,6 +17,7 @@ export const BudgetForm = (props) => {
             year: year,
             estIncome: parseInt(income.current.value)
         })
+        .then(() => history.push("/"))
     }
     
     return (
