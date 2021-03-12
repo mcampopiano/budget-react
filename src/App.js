@@ -5,6 +5,7 @@ import { ApplicationViews } from "./Components/ApplicationViews"
 import { Login } from './Components/auth/Login';
 import { Register } from './Components/auth/Register';
 import { Redirect, Route } from 'react-router';
+import { EnvelopeProvider } from './Components/envelopes/EnvelopeProvider';
 
 function App() {
   return (
@@ -12,7 +13,9 @@ function App() {
       <Route render={() => {
         if (localStorage.getItem("budget_user_id")) {
           return <>
-            <NavBar />
+            <EnvelopeProvider>
+              <NavBar />
+            </EnvelopeProvider>
             <ApplicationViews />
           </>
         } else {
