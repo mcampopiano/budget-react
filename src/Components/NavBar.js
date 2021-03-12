@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import {
     Collapse,
@@ -15,13 +15,19 @@ import {
     NavbarText,
     Button
 } from 'reactstrap';
+import { EnvelopeContext } from './envelopes/EnvelopeProvider';
 
-export const NavBar = (props) => {
+export const NavBar = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggle = () => setIsOpen(!isOpen);
 
     const history = useHistory()
+    const { getEnvelopes, envelopes } = useContext(EnvelopeContext)
+
+    useEffect(() => {
+        getEnvelopes()
+    }, [])
 
     return (
         <div>
@@ -41,14 +47,16 @@ export const NavBar = (props) => {
                                 Envelopes
               </DropdownToggle>
                             <DropdownMenu right>
-                                <DropdownItem>
-                                    Restaurants
-                </DropdownItem>
-                                <Link to="/envelopes/groceries">
-                                    <DropdownItem>
-                                        Groceries
-                </DropdownItem>
-                                </Link>
+                                {
+                                    envelopes.map(envelope => (
+                                        <Link to={{pathname:`/envelopes/${envelope.name}`, state: {chosenEnvelope: envelope}}}>
+                                            <DropdownItem>
+                                                {envelope.name}
+                                            </DropdownItem>
+                                        </Link>
+
+                                    ))
+                                }
                                 <DropdownItem divider />
                                 <Link to="/envelopes/form">
                                     <DropdownItem>
@@ -59,10 +67,10 @@ export const NavBar = (props) => {
                         </UncontrolledDropdown>
                     </Nav>
                     <NavbarText ><Button color="danger"
-                    onClick={() => {
-                        localStorage.clear()
-                        history.push("/")
-                    }}>Log out</Button></NavbarText>
+                        onClick={() => {
+                            localStorage.clear()
+                            history.push("/")
+                        }}>Log out</Button></NavbarText>
                 </Collapse>
             </Navbar>
         </div>

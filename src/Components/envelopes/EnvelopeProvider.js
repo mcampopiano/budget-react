@@ -7,7 +7,11 @@ export const EnvelopeProvider = props => {
     const [envelopes, setEnvelopes] = useState([])
 
     const getEnvelopes = () => {
-        return fetch("http://localhost:8000")
+        return fetch("http://localhost:8000/envelopes", {
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("budget_user_id")}`
+            }
+        })
         .then(res => res.json())
         .then(setEnvelopes)
     }
@@ -21,7 +25,7 @@ export const EnvelopeProvider = props => {
             },
             body: JSON.stringify(envelope)
         })
-        // .then(getEnvelopes)
+        .then(getEnvelopes)
     }
 
     return (
