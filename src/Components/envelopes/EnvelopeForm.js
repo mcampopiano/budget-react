@@ -43,11 +43,11 @@ export const EnvelopeForm = (props) => {
         <Form>
             <FormGroup>
                 <Label for="envelopeName">Name</Label>
-                <Input type="text" name="name" id="envelopeName" placeholder="e.g. Groceries" onChange={handleControlledInputChange}/>
+                <Input type="text" name="name" id="envelopeName" value={envelope.name} placeholder="e.g. Groceries" onChange={handleControlledInputChange}/>
             </FormGroup>
             <FormGroup>
                 <Label for="exampleBudgetAmount">Monthly budget</Label>
-                <Input type="number" name="budget" id="exampleBudgetAmount" placeholder="e.g. 400.00" onChange={handleControlledInputChange}/>
+                <Input type="number" name="budget" id="exampleBudgetAmount" value={envelope.budget} placeholder="e.g. 400.00" onChange={handleControlledInputChange}/>
             </FormGroup>
 
             <ButtonGroup>
