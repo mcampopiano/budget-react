@@ -58,6 +58,8 @@ export const EnvelopeDetail = (props) => {
             </section>
             <ButtonGroup>
                 <Button color="danger">Delete envelope</Button>
+                <Button color="secondary"
+                onClick={() => props.history.push(`/envelopes/form/${envelope.id}`, {chosenEnvelope: envelope})}>Edit envelope</Button>
             </ButtonGroup>
         </div>
     );
