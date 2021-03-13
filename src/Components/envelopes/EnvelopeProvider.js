@@ -48,8 +48,20 @@ export const EnvelopeProvider = props => {
         .then(getEnvelopes)
     }
 
+    const addPurchase = purchase => {
+        return fetch(`http://localhost:8000/envelopes/${purchase.envelopeId}/purchases`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Token ${localStorage.getItem("budget_user_id")}`
+            },
+            body: JSON.stringify(purchase)
+        })
+        .then(getEnvelopes)
+    }
+
     return (
-        <EnvelopeContext.Provider value={{envelopes, setEnvelopes, getEnvelopes, createEnvelope, editEnvelope, deleteEnvelope}}>
+        <EnvelopeContext.Provider value={{envelopes, setEnvelopes, getEnvelopes, createEnvelope, editEnvelope, deleteEnvelope, addPurchase}}>
             {props.children}
         </EnvelopeContext.Provider>
     )
