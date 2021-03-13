@@ -70,7 +70,7 @@ export const EnvelopeProvider = props => {
     }
 
     return (
-        <EnvelopeContext.Provider value={{envelopes, setEnvelopes, getEnvelopes, createEnvelope, editEnvelope, deleteEnvelope, addPurchase}}>
+        <EnvelopeContext.Provider value={{envelopes, setEnvelopes, getEnvelopes, createEnvelope, editEnvelope, deleteEnvelope, addPurchase, deletePurchase}}>
             {props.children}
         </EnvelopeContext.Provider>
     )
