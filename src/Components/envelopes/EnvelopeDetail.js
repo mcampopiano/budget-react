@@ -10,7 +10,7 @@ export const EnvelopeDetail = (props) => {
     const history = useHistory()
     const envelope = props.location.state.chosenEnvelope
     const expenses = envelope.payment
-    const {deleteEnvelope} = useContext(EnvelopeContext)
+    const {deleteEnvelope, deletePurchase} = useContext(EnvelopeContext)
     return (
         <div className="table envelope">
             <h1>{envelope.name}</h1>
@@ -30,6 +30,12 @@ export const EnvelopeDetail = (props) => {
                                     <td>{expense.location}</td>
                                     <td>${expense.amount}</td>
                                     <td>{expense.date}</td>
+                                    <Button color="danger"
+                                    onClick={()=> {
+                                        if (window.confirm("Are you sure you want to delete this purchase? This action cannot be undone.")) {
+                                            deletePurchase(expense).then(() => window.location.reload(true))
+                                        }
+                                    }}>X</Button>
                                 </tr>
                             ))
                         }
