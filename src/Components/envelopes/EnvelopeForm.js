@@ -47,12 +47,12 @@ export const EnvelopeForm = (props) => {
             </FormGroup>
             <FormGroup>
                 <Label for="exampleBudgetAmount">Monthly budget</Label>
-                <Input type="number" name="budget" id="exampleBudgetAmount" value={envelope.budget} placeholder="e.g. 400.00" onChange={handleControlledInputChange}/>
+                <Input type="number" name="budget" id="exampleBudgetAmount" value={envelope.budget} onChange={handleControlledInputChange}/>
             </FormGroup>
 
             <ButtonGroup>
                 <Button color="success"
-                onClick={constructEnvelope}>Submit</Button>
+                onClick={constructEnvelope}>{editMode ? "Save changes" : "Submit"}</Button>
                 <Button color="danger" onClick={() => history.goBack()}>Cancel</Button>
             </ButtonGroup>
         </Form>
