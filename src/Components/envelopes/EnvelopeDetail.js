@@ -36,7 +36,7 @@ export const EnvelopeDetail = (props) => {
                     </tbody>
                 </Table>
                 <Button color="success"
-                onClick={() => history.push("/envelopes/purchase/form")}>Add purchase</Button>
+                onClick={() => history.push("/envelopes/purchase/form", {chosenEnvelope: envelope})}>Add purchase</Button>
             </section>
             <section className="totals">
                 <Card>

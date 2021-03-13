@@ -4,6 +4,7 @@ import { Button, Form, FormGroup, Label, Input, ButtonGroup } from 'reactstrap';
 
 export const PurchaseForm = (props) => {
     const history = useHistory()
+    const envelope = props.location.state.chosenEnvelope
     return (
         <Form>
             <FormGroup>
