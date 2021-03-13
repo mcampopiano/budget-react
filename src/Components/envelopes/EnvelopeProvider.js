@@ -27,9 +27,20 @@ export const EnvelopeProvider = props => {
         })
         .then(getEnvelopes)
     }
+    const editEnvelope = envelope => {
+        return fetch(`http://localhost:8000/envelopes/${envelope.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Token ${localStorage.getItem("budget_user_id")}`
+            },
+            body: JSON.stringify(envelope)
+        })
+        .then(getEnvelopes)
+    }
 
     return (
-        <EnvelopeContext.Provider value={{envelopes, setEnvelopes, getEnvelopes, createEnvelope}}>
+        <EnvelopeContext.Provider value={{envelopes, setEnvelopes, getEnvelopes, createEnvelope, editEnvelope}}>
             {props.children}
         </EnvelopeContext.Provider>
     )
