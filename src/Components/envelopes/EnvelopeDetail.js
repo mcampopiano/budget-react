@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router';
 import {
     Table, Card, CardText, CardBody,
     CardTitle, Button, ButtonGroup
 } from 'reactstrap';
+import { EnvelopeContext } from './EnvelopeProvider';
 
 export const EnvelopeDetail = (props) => {
     const history = useHistory()
     const envelope = props.location.state.chosenEnvelope
     const expenses = envelope.payment
+    const {deleteEnvelope} = useContext(EnvelopeContext)
     return (
         <div className="table envelope">
             <h1>{envelope.name}</h1>
@@ -57,9 +59,13 @@ export const EnvelopeDetail = (props) => {
                 </Card>
             </section>
             <ButtonGroup>
-                <Button color="danger">Delete envelope</Button>
+                <Button color="danger"
+                onClick={() => {
+                    if (window.confirm("Are you sure you want to delete? This cannot be undone")) deleteEnvelope(envelope).then(history.push("/"))
+                }}>Delete envelope</Button>
                 <Button color="secondary"
-                onClick={() => props.history.push(`/envelopes/form/${envelope.id}`, {chosenEnvelope: envelope})}>Edit envelope</Button>
+                onClick={() => props.history.push(`/envelopes/form/${envelope.id}`, {chosenEnvelope: envelope})}>Edit envelope
+                </Button>
             </ButtonGroup>
         </div>
     );
