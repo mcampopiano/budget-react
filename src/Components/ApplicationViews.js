@@ -26,10 +26,11 @@ export const ApplicationViews = props => (
             <Route exact path="/envelopes/form/:envelopeId(\d+)" render={
                 props => <EnvelopeForm {...props} />
             } />
+            <Route exact path="/envelopes/purchase/form" render={
+                props => <PurchaseForm {...props} />
+            } />
+
         </EnvelopeProvider>
-        <Route exact path="/envelopes/purchase/form">
-            <PurchaseForm />
-        </Route>
         <BudgetProvider>
             <Route exact path="/budgets/form">
                 <BudgetForm />
