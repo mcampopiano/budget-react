@@ -5,7 +5,7 @@ import { EnvelopeContext } from './EnvelopeProvider';
 
 export const EnvelopeForm = (props) => {
     const history = useHistory()
-    const {createEnvelope, getEnvelopes, updateEnvelopes, envelopes} = useContext(EnvelopeContext)
+    const {createEnvelope, getEnvelopes, editEnvelope, envelopes} = useContext(EnvelopeContext)
     const [envelope, setEnvelope] = useState({name: "", budget: 0})
 
     const editMode = props.match.params.hasOwnProperty("envelopeId")
@@ -32,7 +32,14 @@ export const EnvelopeForm = (props) => {
     }, [envelopes])
 
     const constructEnvelope = () => {
-        createEnvelope({
+        editMode
+        ? editEnvelope({
+            id: envelope.id,
+            name: envelope.name,
+            budget: envelope.budget
+        })
+        .then(() => history.push("/"))
+        : createEnvelope({
             name: envelope.name,
             budget: envelope.budget
         })
