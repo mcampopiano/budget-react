@@ -48,14 +48,16 @@ export const NavBar = () => {
               </DropdownToggle>
                             <DropdownMenu right>
                                 {
-                                    envelopes.map(envelope => (
-                                        <Link to={{pathname:`/envelopes/${envelope.name}`, state: {chosenEnvelope: envelope}}}>
-                                            <DropdownItem>
-                                                {envelope.name}
-                                            </DropdownItem>
-                                        </Link>
+                                    envelopes.map(envelope => {
+                                        if (envelope.user.key === localStorage.getItem('budget_user_id')) {
+                                            return <Link to={{ pathname: `/envelopes/${envelope.id}`, state: { chosenEnvelope: envelope } }}>
+                                                <DropdownItem>
+                                                    {envelope.name}
+                                                </DropdownItem>
+                                            </Link>
+                                        }
 
-                                    ))
+                                    })
                                 }
                                 <DropdownItem divider />
                                 <Link to="/envelopes/form">
