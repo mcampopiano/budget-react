@@ -4,6 +4,7 @@ import { Button, Form, FormGroup, Label, Input, ButtonGroup } from 'reactstrap';
 
 export const DepositForm = (props) => {
     const history = useHistory()
+    const budgetId = props.location.state.budgetId
     return (
         <Form>
             <FormGroup>
