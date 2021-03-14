@@ -15,8 +15,17 @@ export const DepositProvider = props => {
         })
     }
 
+    const deleteDeposit = deposit => {
+        return fetch(`http://localhost:8000/deposits/${deposit.id}`, {
+            method: "DELETE",
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("budget_user_id")}`
+            }
+        })
+    }
+
     return (
-        <DepositContext.Provider value={{createDeposit}}>
+        <DepositContext.Provider value={{createDeposit, deleteDeposit}}>
             {props.children}
         </DepositContext.Provider>
     )
