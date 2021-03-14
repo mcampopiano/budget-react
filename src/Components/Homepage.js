@@ -5,9 +5,11 @@ import {
     CardTitle, Button
 } from 'reactstrap';
 import { BudgetContext } from './budgets/BudgetProvider';
+import { DepositContext } from './deposits/DepositProvider';
 
 export const Homepage = (props) => {
     const { getBudgetById } = useContext(BudgetContext)
+    const {deleteDeposit} = useContext(DepositContext)
     const history = useHistory()
     const budgetId = localStorage.getItem("budgetId")
     const [currentBudget, setBudget] = useState({})
@@ -31,11 +33,17 @@ export const Homepage = (props) => {
                         </thead>
                         <tbody>
                             {
-                                currentBudget.income&&currentBudget.income.map(depsoit => {
+                                currentBudget.income && currentBudget.income.map(deposit => {
                                     return <tr>
-                                        <td>{depsoit.source}</td>
-                                        <td>${depsoit.amount}</td>
-                                        <td>{depsoit.date}</td>
+                                        <td>{deposit.source}</td>
+                                        <td>${deposit.amount}</td>
+                                        <td>{deposit.date}</td>
+                                        <Button color="danger"
+                                            onClick={() => {
+                                                if (window.confirm("Are you sure you want to delete this purchase? This action cannot be undone.")) {
+                                                    deleteDeposit(deposit)
+                                                }
+                                            }}>X</Button>
                                     </tr>
                                 })
                             }

@@ -15,9 +15,11 @@ import { Homepage } from "./Homepage"
 export const ApplicationViews = props => (
     <>
         <BudgetProvider>
-            <Route exact path="/" render={
-                props => <Homepage {...props} />
-            } />
+            <DepositProvider>
+                <Route exact path="/" render={
+                    props => <Homepage {...props} />
+                } />
+            </DepositProvider>
         </BudgetProvider>
         <EnvelopeProvider>
             <Route exact path="/envelopes/:envelopeId(\d+)" render={
