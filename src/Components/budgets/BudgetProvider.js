@@ -22,6 +22,7 @@ export const BudgetProvider = props => {
                 "Authorization": `Token ${localStorage.getItem("budget_user_id")}`
             }
         })
+        .then(res => res.json())
     }
 
     return (

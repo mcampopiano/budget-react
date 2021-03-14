@@ -14,9 +14,11 @@ import { Homepage } from "./Homepage"
 
 export const ApplicationViews = props => (
     <>
-        <Route exact path="/" render={
-            props => <Homepage {...props} />
-        } />
+        <BudgetProvider>
+            <Route exact path="/" render={
+                props => <Homepage {...props} />
+            } />
+        </BudgetProvider>
         <EnvelopeProvider>
             <Route exact path="/envelopes/:envelopeId(\d+)" render={
                 props => <EnvelopeDetail {...props} />
@@ -40,7 +42,7 @@ export const ApplicationViews = props => (
         <DepositProvider>
             <Route exact path="/deposits/form" render={
                 props => <DepositForm {...props} />
-            }/>
+            } />
         </DepositProvider>
     </>
 )
