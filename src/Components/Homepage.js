@@ -7,6 +7,7 @@ import {
 
 export const Homepage = (props) => {
     const history = useHistory()
+    const budgetId = localStorage.getItem("budgetId")
     return (
         <>
             <div className="table income">
@@ -36,7 +37,7 @@ export const Homepage = (props) => {
                             </tr>
                         </tbody>
                     </Table>
-                    <Button color="success" onClick={() => history.push("/deposits/form")}>Add deposit</Button>
+                    <Button color="success" onClick={() => history.push("/deposits/form", {budgetId: budgetId})}>Add deposit</Button>
                 </section>
                 <section className="totals">
                     <Card>
