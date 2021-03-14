@@ -16,8 +16,17 @@ export const BudgetProvider = props => {
         })
     }
 
+    const getBudgetById = budgetId => {
+        return fetch(`http://localhost:8000/budgets/${budgetId}`, {
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("budget_user_id")}`
+            }
+        })
+        .then(res => res.json())
+    }
+
     return (
-        <BudgetContext.Provider value={{budgets, setBudgets, createBudget}}>
+        <BudgetContext.Provider value={{budgets, setBudgets, createBudget, getBudgetById}}>
             {props.children}
         </BudgetContext.Provider>
     )

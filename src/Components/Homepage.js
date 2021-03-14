@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import {
     Table, Card, CardText, CardBody,
     CardTitle, Button
 } from 'reactstrap';
+import { BudgetContext } from './budgets/BudgetProvider';
 
 export const Homepage = (props) => {
+    const { getBudgetById } = useContext(BudgetContext)
     const history = useHistory()
     const budgetId = localStorage.getItem("budgetId")
+    const [currentBudget, setBudget] = useState({})
+
+    useEffect(() => {
+        getBudgetById(budgetId)
+            .then(setBudget)
+    }, [])
     return (
         <>
             <div className="table income">
@@ -16,40 +24,37 @@ export const Homepage = (props) => {
                     <Table hover>
                         <thead>
                             <tr>
-                                <th>#</th>
                                 <th>Source</th>
                                 <th>Amount</th>
                                 <th>Date</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Paycheck</td>
-                                <td>$1,502.25</td>
-                                <td>03/01/2021</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Paycheck</td>
-                                <td>$1,510.52</td>
-                                <td>03/07/2021</td>
-                            </tr>
+                            {
+                                currentBudget.income&&currentBudget.income.map(depsoit => {
+                                    return <tr>
+                                        <td>{depsoit.source}</td>
+                                        <td>${depsoit.amount}</td>
+                                        <td>{depsoit.date}</td>
+                                    </tr>
+                                })
+                            }
+
                         </tbody>
                     </Table>
-                    <Button color="success" onClick={() => history.push("/deposits/form", {budgetId: budgetId})}>Add deposit</Button>
+                    <Button color="success" onClick={() => history.push("/deposits/form", { budgetId: budgetId })}>Add deposit</Button>
                 </section>
                 <section className="totals">
                     <Card>
                         <CardTitle tag="h5">Estimated in</CardTitle>
                         <CardBody>
-                            <CardText>$5,000</CardText>
+                            <CardText>${currentBudget.est_income}</CardText>
                         </CardBody>
                     </Card>
                     <Card>
                         <CardTitle tag="h5">Actual in</CardTitle>
                         <CardBody>
-                            <CardText>${1502.25+1510.52}</CardText>
+                            <CardText>${currentBudget.actual_inc}</CardText>
                         </CardBody>
                     </Card>
                 </section>
@@ -58,25 +63,25 @@ export const Homepage = (props) => {
                     <Card>
                         <CardTitle tag="h5">Total Budget</CardTitle>
                         <CardBody>
-                            <CardText>$4,000</CardText>
+                            <CardText>${currentBudget.total_budget}</CardText>
                         </CardBody>
                     </Card>
                     <Card>
                         <CardTitle tag="h5">Total spent</CardTitle>
                         <CardBody>
-                            <CardText>$2,307.97</CardText>
+                            <CardText>${currentBudget.total_spent}</CardText>
                         </CardBody>
                     </Card>
                     <Card>
                         <CardTitle tag="h5">Remaing budget</CardTitle>
                         <CardBody>
-                            <CardText>$1692.03</CardText>
+                            <CardText>${currentBudget.remaining_budget}</CardText>
                         </CardBody>
                     </Card>
                     <Card>
-                        <CardTitle tag="h5">Actual in - out</CardTitle>
+                        <CardTitle tag="h5">Net total</CardTitle>
                         <CardBody>
-                            <CardText>$704.80</CardText>
+                            <CardText>${currentBudget.net_total}</CardText>
                         </CardBody>
                     </Card>
                 </section>
