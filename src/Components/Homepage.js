@@ -93,7 +93,6 @@ export const Homepage = (props) => {
                         </CardBody>
                     </Card>
                 </section>
-                <Button onClick={() => history.push("/budgets/form")}>Create new budget</Button>
             </div>
         </>
     );
