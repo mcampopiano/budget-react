@@ -3,6 +3,7 @@ import React, { useState } from "react"
 export const DepositContext = React.createContext()
 
 export const DepositProvider = props => {
+    const [deposits, setDeposits] = useState(true)
 
     const createDeposit = deposit => {
         return fetch("http://localhost:8000/deposits", {
@@ -13,6 +14,7 @@ export const DepositProvider = props => {
             },
             body: JSON.stringify(deposit)
         })
+        .then(() => setDeposits(deposits ? false : true))
     }
 
     const deleteDeposit = deposit => {
@@ -22,10 +24,11 @@ export const DepositProvider = props => {
                 "Authorization": `Token ${localStorage.getItem("budget_user_id")}`
             }
         })
+        .then(() => setDeposits(deposits ? false : true))
     }
 
     return (
-        <DepositContext.Provider value={{createDeposit, deleteDeposit}}>
+        <DepositContext.Provider value={{createDeposit, deleteDeposit, deposits}}>
             {props.children}
         </DepositContext.Provider>
     )
