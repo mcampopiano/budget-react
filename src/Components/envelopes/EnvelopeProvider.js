@@ -5,6 +5,7 @@ export const EnvelopeContext = React.createContext()
 
 export const EnvelopeProvider = props => {
     const [envelopes, setEnvelopes] = useState([])
+    
 
     const getEnvelopes = () => {
         return fetch("http://localhost:8000/envelopes", {
@@ -14,6 +15,15 @@ export const EnvelopeProvider = props => {
         })
         .then(res => res.json())
         .then(setEnvelopes)
+    }
+
+    const getEnvelopeById = envelopeId => {
+        return fetch(`http://localhost:8000/envelopes/${envelopeId}`, {
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("budget_user_id")}`
+            }
+        })
+        .then(res => res.json())
     }
 
     const createEnvelope = envelope => {
@@ -70,7 +80,8 @@ export const EnvelopeProvider = props => {
     }
 
     return (
-        <EnvelopeContext.Provider value={{envelopes, setEnvelopes, getEnvelopes, createEnvelope, editEnvelope, deleteEnvelope, addPurchase, deletePurchase}}>
+        <EnvelopeContext.Provider value={{envelopes, setEnvelopes, getEnvelopes, createEnvelope, 
+        editEnvelope, deleteEnvelope, addPurchase, deletePurchase, getEnvelopeById}}>
             {props.children}
         </EnvelopeContext.Provider>
     )

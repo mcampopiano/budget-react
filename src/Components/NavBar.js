@@ -37,10 +37,7 @@ export const NavBar = () => {
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="me-auto" navbar>
                         <NavItem>
-                            <NavLink href="#">Recurring bills</NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink href="#">New Budget</NavLink>
+                            <NavLink href="/budgets/form">New Budget</NavLink>
                         </NavItem>
                         <UncontrolledDropdown nav inNavbar>
                             <DropdownToggle nav caret>
@@ -50,7 +47,7 @@ export const NavBar = () => {
                                 {
                                     envelopes.map(envelope => {
                                         if (envelope.user.key === localStorage.getItem('budget_user_id')) {
-                                            return <Link to={{ pathname: `/envelopes/${envelope.id}`, state: { chosenEnvelope: envelope } }}>
+                                            return <Link to={{ pathname: `/envelopes/${envelope.id}` }}>
                                                 <DropdownItem>
                                                     {envelope.name}
                                                 </DropdownItem>

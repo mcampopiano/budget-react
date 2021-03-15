@@ -24,7 +24,7 @@ export const PurchaseForm = (props) => {
             amount: purchase.amount,
             date: purchase.date
         })
-        .then(history.push("/"))
+        .then(history.push(`/envelopes/${envelope.id}`, {chosenEnvelope: envelope}))
     }
     return (
         <Form>

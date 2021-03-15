@@ -9,7 +9,7 @@ import { DepositContext } from './deposits/DepositProvider';
 
 export const Homepage = (props) => {
     const { getBudgetById } = useContext(BudgetContext)
-    const {deleteDeposit} = useContext(DepositContext)
+    const {deleteDeposit, deposits} = useContext(DepositContext)
     const history = useHistory()
     const budgetId = localStorage.getItem("budgetId")
     const [currentBudget, setBudget] = useState({})
@@ -17,7 +17,7 @@ export const Homepage = (props) => {
     useEffect(() => {
         getBudgetById(budgetId)
             .then(setBudget)
-    }, [])
+    }, [deposits])
     return (
         <>
             <div className="table income">
@@ -93,7 +93,6 @@ export const Homepage = (props) => {
                         </CardBody>
                     </Card>
                 </section>
-                <Button onClick={() => history.push("/budgets/form")}>Create new budget</Button>
             </div>
         </>
     );
