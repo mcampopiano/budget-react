@@ -5,11 +5,13 @@ import {
     CardTitle, Button, ButtonGroup
 } from 'reactstrap';
 import { EnvelopeContext } from './EnvelopeProvider';
+import {formatDate} from '../DateFormatter'
 
 export const EnvelopeDetail = (props) => {
     const history = useHistory()
     const [envelope, setEnvelope] = useState({})
     const {deleteEnvelope, deletePurchase, getEnvelopeById, envelopes} = useContext(EnvelopeContext)
+
 
     useEffect(() => {
         getEnvelopeById(props.match.params.envelopeId)
@@ -32,9 +34,12 @@ export const EnvelopeDetail = (props) => {
                         {
                             envelope.payment&&envelope.payment.map(expense => (
                                 <tr>
+                                    {
+                                        
+                                    }
                                     <td>{expense.location}</td>
                                     <td>${expense.amount}</td>
-                                    <td>{expense.date}</td>
+                                    <td>{formatDate(expense.date)}</td>
                                     <Button color="danger"
                                     onClick={()=> {
                                         if (window.confirm("Are you sure you want to delete this purchase? This action cannot be undone.")) {

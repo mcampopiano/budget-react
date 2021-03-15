@@ -6,6 +6,7 @@ import {
 } from 'reactstrap';
 import { BudgetContext } from './budgets/BudgetProvider';
 import { DepositContext } from './deposits/DepositProvider';
+import {formatDate} from "./DateFormatter"
 
 export const Homepage = (props) => {
     const { getBudgetById } = useContext(BudgetContext)
@@ -37,7 +38,7 @@ export const Homepage = (props) => {
                                     return <tr>
                                         <td>{deposit.source}</td>
                                         <td>${deposit.amount}</td>
-                                        <td>{deposit.date}</td>
+                                        <td>{formatDate(deposit.date)}</td>
                                         <Button color="danger"
                                             onClick={() => {
                                                 if (window.confirm("Are you sure you want to delete this purchase? This action cannot be undone.")) {
