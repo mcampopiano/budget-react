@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import {
     Table, Card, CardText, CardBody,
-    CardTitle, Button
+    CardTitle, Button,
 } from 'reactstrap';
 import { BudgetContext } from './budgets/BudgetProvider';
 import { DepositContext } from './deposits/DepositProvider';
@@ -15,10 +15,22 @@ export const Homepage = (props) => {
     const budgetId = localStorage.getItem("budgetId")
     const [currentBudget, setBudget] = useState({})
 
+   
     useEffect(() => {
         getBudgetById(budgetId)
             .then(setBudget)
     }, [deposits])
+
+    // useEffect(() => {
+    //     if (!localStorage.getItem("budgetId")) {
+    //         if( window.confirm(`Looks like you don't have any saved budgets. 
+    //         Would you like to make one now?
+    //         (NOTE: after creating a budget, you will be redirected to the login page)`) ) {
+    //             history.push("/budgets/form")
+    //         }
+    //      }
+    // }, [])
+    
     return (
         <>
             <div className="table income">
