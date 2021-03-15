@@ -21,21 +21,19 @@ export const ApplicationViews = props => (
                 } />
             </DepositProvider>
         </BudgetProvider>
-        <EnvelopeProvider>
-            <Route exact path="/envelopes/:envelopeId(\d+)" render={
-                props => <EnvelopeDetail {...props} />
-            } />
-            <Route exact path="/envelopes/form" render={
-                props => <EnvelopeForm {...props} />
-            } />
-            <Route exact path="/envelopes/form/:envelopeId(\d+)" render={
-                props => <EnvelopeForm {...props} />
-            } />
-            <Route exact path="/envelopes/purchase/form" render={
-                props => <PurchaseForm {...props} />
-            } />
 
-        </EnvelopeProvider>
+        <Route exact path="/envelopes/:envelopeId(\d+)" render={
+            props => <EnvelopeDetail {...props} />
+        } />
+        <Route exact path="/envelopes/form" render={
+            props => <EnvelopeForm {...props} />
+        } />
+        <Route exact path="/envelopes/form/:envelopeId(\d+)" render={
+            props => <EnvelopeForm {...props} />
+        } />
+        <Route exact path="/envelopes/purchase/form" render={
+            props => <PurchaseForm {...props} />
+        } />
         <BudgetProvider>
             <Route exact path="/budgets/form">
                 <BudgetForm />

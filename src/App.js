@@ -15,8 +15,8 @@ function App() {
           return <>
             <EnvelopeProvider>
               <NavBar />
+              <ApplicationViews />
             </EnvelopeProvider>
-            <ApplicationViews />
           </>
         } else {
           return <Redirect to="/login" />

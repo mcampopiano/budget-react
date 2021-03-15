@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import {
     Table, Card, CardText, CardBody,
@@ -8,9 +8,14 @@ import { EnvelopeContext } from './EnvelopeProvider';
 
 export const EnvelopeDetail = (props) => {
     const history = useHistory()
-    const envelope = props.location.state.chosenEnvelope
-    const expenses = envelope.payment
-    const {deleteEnvelope, deletePurchase} = useContext(EnvelopeContext)
+    const [envelope, setEnvelope] = useState({})
+    const {deleteEnvelope, deletePurchase, getEnvelopeById, envelopes} = useContext(EnvelopeContext)
+
+    useEffect(() => {
+        getEnvelopeById(props.match.params.envelopeId)
+        .then(setEnvelope)
+    }, [props.match.params.envelopeId, envelopes])
+
     return (
         <div className="table envelope">
             <h1>{envelope.name}</h1>
@@ -25,7 +30,7 @@ export const EnvelopeDetail = (props) => {
                     </thead>
                     <tbody>
                         {
-                            expenses.map(expense => (
+                            envelope.payment&&envelope.payment.map(expense => (
                                 <tr>
                                     <td>{expense.location}</td>
                                     <td>${expense.amount}</td>
@@ -33,7 +38,7 @@ export const EnvelopeDetail = (props) => {
                                     <Button color="danger"
                                     onClick={()=> {
                                         if (window.confirm("Are you sure you want to delete this purchase? This action cannot be undone.")) {
-                                            deletePurchase(expense).then(() => window.location.reload(true))
+                                            deletePurchase(expense)
                                         }
                                     }}>X</Button>
                                 </tr>
