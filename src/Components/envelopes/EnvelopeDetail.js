@@ -33,10 +33,7 @@ export const EnvelopeDetail = (props) => {
                     <tbody>
                         {
                             envelope.payment&&envelope.payment.map(expense => (
-                                <tr>
-                                    {
-                                        
-                                    }
+                                <tr key={expense.id}>
                                     <td>{expense.location}</td>
                                     <td>${expense.amount}</td>
                                     <td>{formatDate(expense.date)}</td>
