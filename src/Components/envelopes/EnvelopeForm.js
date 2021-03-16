@@ -5,8 +5,8 @@ import { EnvelopeContext } from './EnvelopeProvider';
 
 export const EnvelopeForm = (props) => {
     const history = useHistory()
-    const {createEnvelope, getEnvelopes, editEnvelope, envelopes} = useContext(EnvelopeContext)
-    const [envelope, setEnvelope] = useState({name: "", budget: 0})
+    const { createEnvelope, getEnvelopes, editEnvelope, envelopes } = useContext(EnvelopeContext)
+    const [envelope, setEnvelope] = useState({ name: "", budget: 0 })
 
     const editMode = props.match.params.hasOwnProperty("envelopeId")
 
@@ -38,30 +38,31 @@ export const EnvelopeForm = (props) => {
             name: envelope.name,
             budget: envelope.budget
         })
-        .then(() => history.push("/"))
+        .then(() => history.push(`/envelopes/${envelope.id}`))
         : createEnvelope({
             name: envelope.name,
             budget: envelope.budget
         })
-        .then(() => history.push("/"))
-    }
+        .then(res => res.json())
+        .then(res => history.push(`/envelopes/${res.id}`))
+}
 
-    return (
-        <Form>
-            <FormGroup>
-                <Label for="envelopeName">Name</Label>
-                <Input type="text" name="name" id="envelopeName" value={envelope.name} placeholder="e.g. Groceries" onChange={handleControlledInputChange}/>
-            </FormGroup>
-            <FormGroup>
-                <Label for="exampleBudgetAmount">Monthly budget</Label>
-                <Input type="number" name="budget" id="exampleBudgetAmount" value={envelope.budget} onChange={handleControlledInputChange}/>
-            </FormGroup>
+return (
+    <Form>
+        <FormGroup>
+            <Label for="envelopeName">Name</Label>
+            <Input type="text" name="name" id="envelopeName" value={envelope.name} placeholder="e.g. Groceries" onChange={handleControlledInputChange} />
+        </FormGroup>
+        <FormGroup>
+            <Label for="exampleBudgetAmount">Monthly budget</Label>
+            <Input type="number" name="budget" id="exampleBudgetAmount" value={envelope.budget} onChange={handleControlledInputChange} />
+        </FormGroup>
 
-            <ButtonGroup>
-                <Button color="success"
+        <ButtonGroup>
+            <Button color="success"
                 onClick={constructEnvelope}>{editMode ? "Save changes" : "Submit"}</Button>
-                <Button color="danger" onClick={() => history.goBack()}>Cancel</Button>
-            </ButtonGroup>
-        </Form>
-    );
+            <Button color="danger" onClick={() => history.goBack()}>Cancel</Button>
+        </ButtonGroup>
+    </Form>
+);
 }
