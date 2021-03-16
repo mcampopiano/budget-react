@@ -21,15 +21,6 @@ export const Homepage = (props) => {
             .then(setBudget)
     }, [deposits])
 
-    // useEffect(() => {
-    //     if (!localStorage.getItem("budgetId")) {
-    //         if( window.confirm(`Looks like you don't have any saved budgets. 
-    //         Would you like to make one now?
-    //         (NOTE: after creating a budget, you will be redirected to the login page)`) ) {
-    //             history.push("/budgets/form")
-    //         }
-    //      }
-    // }, [])
     
     return (
         <>
@@ -47,7 +38,7 @@ export const Homepage = (props) => {
                         <tbody>
                             {
                                 currentBudget.income && currentBudget.income.map(deposit => {
-                                    return <tr>
+                                    return <tr key={deposit.id}>
                                         <td>{deposit.source}</td>
                                         <td>${deposit.amount}</td>
                                         <td>{formatDate(deposit.date)}</td>

@@ -47,7 +47,7 @@ export const NavBar = () => {
                                 {
                                     envelopes.map(envelope => {
                                         if (envelope.user.key === localStorage.getItem('budget_user_id')) {
-                                            return <Link to={{ pathname: `/envelopes/${envelope.id}` }}>
+                                            return <Link key={envelope.id} to={{ pathname: `/envelopes/${envelope.id}` }}>
                                                 <DropdownItem>
                                                     {envelope.name}
                                                 </DropdownItem>
