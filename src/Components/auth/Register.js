@@ -23,7 +23,6 @@ export const Register = () => {
                 "password": password.current.value
             }
 
-            console.log(newUser.created_on)
             
             return fetch("http://localhost:8000/register", {
                 method: "POST",

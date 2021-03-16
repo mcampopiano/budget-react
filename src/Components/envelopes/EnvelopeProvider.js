@@ -35,7 +35,6 @@ export const EnvelopeProvider = props => {
             },
             body: JSON.stringify(envelope)
         })
-        .then(getEnvelopes)
     }
     const editEnvelope = envelope => {
         return fetch(`http://localhost:8000/envelopes/${envelope.id}`, {
