@@ -45,6 +45,7 @@ export const EnvelopeForm = (props) => {
         })
         .then(res => res.json())
         .then(res => history.push(`/envelopes/${res.id}`))
+        .then(getEnvelopes)
 }
 
 return (
