@@ -1,0 +1,33 @@
+.homepage, .entries, .totals, .budget--items {
+    display:flex;
+    flex-wrap: wrap;
+
+}
+.homepage {
+    justify-content: space-around;
+}
+
+.income {
+    width: 750px
+} 
+
+.table--homepage {
+    width: 350px;
+}
+.totals {
+    width: 230px;
+}
+.header {
+    text-align: center;
+}
+.card {
+    word-wrap: normal;
+}
+.totals--card {
+    width: 115px;
+    height: 115px;
+}
+
+.budget--item {
+    flex-basis: 50%;
+}
