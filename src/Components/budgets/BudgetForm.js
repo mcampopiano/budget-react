@@ -18,7 +18,7 @@ export const BudgetForm = () => {
             estIncome: parseInt(income.current.value)
         })
         .then(res => res.json())
-        .then(res => localStorage.setItem("BudgetId", res.id))
+        .then(res => localStorage.setItem("budgetId", res.id))
         .then(() => history.push("/"))
     }
     
