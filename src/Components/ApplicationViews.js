@@ -6,7 +6,6 @@ import { DepositForm } from "./deposits/DepositForm"
 import { DepositProvider } from "./deposits/DepositProvider"
 import { EnvelopeDetail } from "./envelopes/EnvelopeDetail"
 import { EnvelopeForm } from "./envelopes/EnvelopeForm"
-import { EnvelopeProvider } from "./envelopes/EnvelopeProvider"
 import { PurchaseForm } from "./envelopes/PurchaseForm"
 import { Homepage } from "./Homepage"
 
