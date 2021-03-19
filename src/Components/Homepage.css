@@ -12,7 +12,7 @@
 } 
 
 .table--homepage {
-    width: 350px;
+    width: 350px !important;
 }
 .totals {
     width: 230px;
