@@ -11,11 +11,13 @@ export const BillProvider = props => {
                 "Authorization": `Token ${localStorage.getItem("budget_user_id")}`
             }
         })
+        .then(res => res.json())
+        .then(setBills)
     }
 
     return (
-        <BillContext.Provicer value={{bills, setBills, getBills}}>
+        <BillContext.Provider value={{bills, setBills, getBills}}>
             {props.children}
-        </BillContext.Provicer>
+        </BillContext.Provider>
     )
 }

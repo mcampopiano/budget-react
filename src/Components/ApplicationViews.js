@@ -1,5 +1,7 @@
 import React from "react"
 import { Route } from "react-router-dom"
+import { BillList } from "./bills/BillList"
+import { BillProvider } from "./bills/BillProvider"
 import { BudgetForm } from "./budgets/BudgetForm"
 import { BudgetProvider } from "./budgets/BudgetProvider"
 import { DepositForm } from "./deposits/DepositForm"
@@ -43,5 +45,11 @@ export const ApplicationViews = props => (
                 props => <DepositForm {...props} />
             } />
         </DepositProvider>
+
+        <BillProvider>
+            <Route exact path ="/bills" render={
+                props => <BillList {...props} />
+            } />
+        </BillProvider>
     </>
 )
