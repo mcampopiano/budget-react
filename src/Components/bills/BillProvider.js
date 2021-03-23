@@ -15,8 +15,19 @@ export const BillProvider = props => {
         .then(setBills)
     }
 
+    const addBiller = biller => {
+        return fetch("http://localhost:8000/recurring", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Token ${localStorage.getItem("budget_user_id")}`
+            },
+            body: JSON.stringify(biller)
+        })
+    }
+
     return (
-        <BillContext.Provider value={{bills, setBills, getBills}}>
+        <BillContext.Provider value={{bills, setBills, getBills, addBiller}}>
             {props.children}
         </BillContext.Provider>
     )

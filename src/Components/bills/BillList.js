@@ -85,6 +85,7 @@ export const BillList = (props) => {
                     </CardBody>
                 </Card>
             </section>
+            <Button color="success" onClick={() => props.history.push("/bills/form")}>Add biller</Button>
         </>
     )
 }
