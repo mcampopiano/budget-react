@@ -16,7 +16,7 @@ export const BillProvider = props => {
     }
 
     const addBiller = biller => {
-        return fetch("http://loalhost:8000/recurring", {
+        return fetch("http://localhost:8000/recurring", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
