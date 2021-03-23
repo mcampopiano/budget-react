@@ -39,6 +39,9 @@ export const NavBar = () => {
                         <NavItem>
                             <NavLink href="/budgets/form">New Budget</NavLink>
                         </NavItem>
+                        <NavItem>
+                            <NavLink href="/bills">Recurring Bills</NavLink>
+                        </NavItem>
                         <UncontrolledDropdown nav inNavbar>
                             <DropdownToggle nav caret>
                                 Envelopes
