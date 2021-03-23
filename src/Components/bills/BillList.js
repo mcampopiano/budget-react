@@ -51,10 +51,12 @@ export const BillList = (props) => {
                                             
                                             }
                                             else {
-                                                return <Button color="success">Add payment</Button>
+                                                return <Button color="success"
+                                                onClick={() => props.history.push(`/payments/form/${bill.id}`)}>Add payment</Button>
                                             }
                                         })
-                                        : <Button color="success">Add payment</Button>
+                                        : <Button 
+                                        onClick={() => props.history.push(`/payments/form/${bill.id}`)}color="success">Add payment</Button>
                                             
                                             
                                     }
