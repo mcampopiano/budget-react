@@ -33,7 +33,7 @@ export const BillProvider = props => {
                 "Content-Type": "application/json",
                 "Authorization": `Token ${localStorage.getItem("budget_user_id")}`
             },
-            body: JSON.stringify(biller)
+            body: JSON.stringify(payment)
         })
     }
 

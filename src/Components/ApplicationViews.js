@@ -3,6 +3,7 @@ import { Route } from "react-router-dom"
 import { BillerForm } from "./bills/BillerForm"
 import { BillList } from "./bills/BillList"
 import { BillProvider } from "./bills/BillProvider"
+import { PaymentForm } from "./bills/PaymentForm"
 import { BudgetForm } from "./budgets/BudgetForm"
 import { BudgetProvider } from "./budgets/BudgetProvider"
 import { DepositForm } from "./deposits/DepositForm"
@@ -53,6 +54,9 @@ export const ApplicationViews = props => (
             } />
             <Route exact path ="/bills/form" render={
                 props => <BillerForm {...props} />
+            } />
+            <Route exact path ="/payments/form/:billerId(\d+)" render={
+                props => <PaymentForm {...props} />
             } />
         </BillProvider>
     </>
