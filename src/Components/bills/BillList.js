@@ -34,34 +34,38 @@ export const BillList = (props) => {
                     <tbody>
                         {
                             bills.map(bill => {
-                                totalBudget += bill.expected_amount
-                                
-                                
-                                return <tr key={bill.id}>
-                                    <td>{bill.biller}</td>
-                                    <td>${bill.expected_amount}</td>
-                                    <td>{bill.due_date}</td>
-                                    {
-                                        bill.payments.length > 0
-                                         ? bill.payments.map(payment => {
-                                            if (payment.budget === parseInt(localStorage.getItem("budgetId"))) {
-                                                actualSpent += payment.amount
-                                                return <> <td>${bill.payments[0].amount}</td>
-                                                <td>{formatDate(bill.payments[0].date_paid)}</td> </>
-                                            
-                                            }
-                                            else {
-                                                return <Button color="success"
-                                                onClick={() => props.history.push(`/payments/form/${bill.id}`)}>Add payment</Button>
-                                            }
-                                        })
-                                        : <Button 
-                                        onClick={() => props.history.push(`/payments/form/${bill.id}`)}color="success">Add payment</Button>
-                                            
-                                            
-                                    }
+                                if (bill.user.key === localStorage.getItem('budget_user_id')) {
 
-                                </tr>
+
+                                    totalBudget += bill.expected_amount
+
+
+                                    return <tr key={bill.id}>
+                                        <td>{bill.biller}</td>
+                                        <td>${bill.expected_amount}</td>
+                                        <td>{bill.due_date}</td>
+                                        {
+                                            bill.payments.length > 0
+                                                ? bill.payments.map(payment => {
+                                                    if (payment.budget === parseInt(localStorage.getItem("budgetId"))) {
+                                                        actualSpent += payment.amount
+                                                        return <> <td>${bill.payments[0].amount}</td>
+                                                            <td>{formatDate(bill.payments[0].date_paid)}</td> </>
+
+                                                    }
+                                                    else {
+                                                        return <Button color="success"
+                                                            onClick={() => props.history.push(`/payments/form/${bill.id}`)}>Add payment</Button>
+                                                    }
+                                                })
+                                                : <Button
+                                                    onClick={() => props.history.push(`/payments/form/${bill.id}`)} color="success">Add payment</Button>
+
+
+                                        }
+
+                                    </tr>
+                                }
                             })
                         }
                     </tbody>
