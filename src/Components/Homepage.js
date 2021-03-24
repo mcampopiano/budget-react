@@ -85,25 +85,25 @@ export const Homepage = (props) => {
                         <Card className="budget--item">
                             <CardTitle tag="h5">Total Budget</CardTitle>
                             <CardBody>
-                                <CardText>${currentBudget.total_budget}</CardText>
+                                <CardText>${currentBudget.total_budget.toFixed(2)}</CardText>
                             </CardBody>
                         </Card>
                         <Card className="budget--item">
                             <CardTitle tag="h5">Total spent</CardTitle>
                             <CardBody>
-                                <CardText>${currentBudget.total_spent}</CardText>
+                                <CardText>${currentBudget.total_spent.toFixed(2)}</CardText>
                             </CardBody>
                         </Card>
                         <Card className="budget--item">
                             <CardTitle tag="h5">Remaing budget</CardTitle>
                             <CardBody>
-                                <CardText>${currentBudget.remaining_budget}</CardText>
+                                <CardText>${currentBudget.remaining_budget.toFixed(2)}</CardText>
                             </CardBody>
                         </Card>
                         <Card className="budget--item">
                             <CardTitle tag="h5">Net total</CardTitle>
                             <CardBody>
-                                <CardText>${currentBudget.net_total}</CardText>
+                                <CardText>${currentBudget.net_total.toFixed(2)}</CardText>
                             </CardBody>
                         </Card>
                     </section>
@@ -114,7 +114,12 @@ export const Homepage = (props) => {
                     envelopes.map(envelope => {
                         if (envelope.user.key === localStorage.getItem('budget_user_id')) {
                             let totalSpent = 0
-                            envelope.payment.forEach(payment => totalSpent += payment.amount)
+                            envelope.payment.forEach(payment => {
+                                if (payment.budget === parseInt(localStorage.getItem('budgetId'))) {
+
+                                    totalSpent += payment.amount
+                                }
+                            })
                             if (totalSpent / envelope.budget < .8) {
                                 return <>
                                     <div className="text-center">${totalSpent} of ${envelope.budget} in {envelope.name}</div>
