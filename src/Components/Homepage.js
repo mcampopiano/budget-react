@@ -31,9 +31,10 @@ export const Homepage = (props) => {
 
     return (
         <>
+                <h1 className="homepage--header">{currentBudget.month} / {currentBudget.year}</h1>
             <div className="homepage">
                 <section className="income">
-                    <h1 className="header">Income</h1>
+                    <h2 className="header">Income</h2>
                     <section className="entries">
                         <Table hover className="table--homepage">
                             <thead>
@@ -123,7 +124,7 @@ export const Homepage = (props) => {
                             if (totalSpent / envelope.budget < .8) {
                                 return <>
                                     <div className="text-center">${totalSpent} of ${envelope.budget} in {envelope.name}</div>
-                                    <Progress animated value={totalSpent} max={envelope.budget} />
+                                    <Progress color="success" animated value={totalSpent} max={envelope.budget} />
                                 </>
                             } else if (totalSpent / envelope.budget >= .8  && totalSpent / envelope.budget < .9) {
                                 return <>

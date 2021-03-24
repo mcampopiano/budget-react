@@ -7,6 +7,10 @@
     justify-content: space-around;
 }
 
+.homepage--header {
+    text-align: center;
+}
+
 .income {
     width: 750px
 } 
