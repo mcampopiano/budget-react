@@ -8,7 +8,7 @@ import { formatDate } from '../DateFormatter'
 import { BillContext } from './BillProvider';
 
 export const BillList = (props) => {
-    const { bills, getBills } = useContext(BillContext)
+    const { bills, getBills, removePayment } = useContext(BillContext)
 
     let totalBudget = 0
     let actualSpent = 0
@@ -50,7 +50,13 @@ export const BillList = (props) => {
                                                     if (payment.budget === parseInt(localStorage.getItem("budgetId"))) {
                                                         actualSpent += payment.amount
                                                         return <> <td>${bill.payments[0].amount}</td>
-                                                            <td>{formatDate(bill.payments[0].date_paid)}</td> </>
+                                                            <td>{formatDate(bill.payments[0].date_paid)}
+                                                                <Button color="danger" className="btn--small"
+                                                                    onClick={() => {
+                                                                        if (window.confirm("Are you sure you want to delete this payment? This action cannot be undone.")) {
+                                                                            removePayment(bill.payments[0].id)
+                                                                        }
+                                                                    }}>X</Button></td> </>
 
                                                     }
                                                     else {
