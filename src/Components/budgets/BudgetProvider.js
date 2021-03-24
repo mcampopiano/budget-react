@@ -5,6 +5,16 @@ export const BudgetContext = React.createContext()
 export const BudgetProvider = props => {
     const [budgets, setBudgets] = useState([])
 
+    const getBudgets = () => {
+        return fetch("http://localhost:8000/budgets", {
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("budget_user_id")}`
+            }
+        })
+        .then(res => res.json())
+        .then(setBudgets)
+    }
+
      const createBudget = budget => {
         return fetch("http://localhost:8000/budgets", {
             method: "POST",
@@ -26,7 +36,7 @@ export const BudgetProvider = props => {
     }
 
     return (
-        <BudgetContext.Provider value={{budgets, setBudgets, createBudget, getBudgetById}}>
+        <BudgetContext.Provider value={{budgets, setBudgets, createBudget, getBudgetById, getBudgets}}>
             {props.children}
         </BudgetContext.Provider>
     )

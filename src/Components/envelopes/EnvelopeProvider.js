@@ -8,6 +8,7 @@ export const EnvelopeProvider = props => {
     
 
     const getEnvelopes = () => {
+        console.trace()
         return fetch("http://localhost:8000/envelopes", {
             headers: {
                 "Authorization": `Token ${localStorage.getItem("budget_user_id")}`

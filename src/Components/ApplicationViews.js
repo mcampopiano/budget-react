@@ -5,6 +5,7 @@ import { BillList } from "./bills/BillList"
 import { BillProvider } from "./bills/BillProvider"
 import { PaymentForm } from "./bills/PaymentForm"
 import { BudgetForm } from "./budgets/BudgetForm"
+import { BudgetList } from "./budgets/BudgetList"
 import { BudgetProvider } from "./budgets/BudgetProvider"
 import { DepositForm } from "./deposits/DepositForm"
 import { DepositProvider } from "./deposits/DepositProvider"
@@ -41,6 +42,9 @@ export const ApplicationViews = props => (
             <Route exact path="/budgets/form">
                 <BudgetForm />
             </Route>
+            <Route exact path="/budgets/saved" render ={
+                props => <BudgetList {...props} />
+            } />
         </BudgetProvider>
         <DepositProvider>
             <Route exact path="/deposits/form" render={
@@ -49,13 +53,13 @@ export const ApplicationViews = props => (
         </DepositProvider>
 
         <BillProvider>
-            <Route exact path ="/bills" render={
+            <Route exact path="/bills" render={
                 props => <BillList {...props} />
             } />
-            <Route exact path ="/bills/form" render={
+            <Route exact path="/bills/form" render={
                 props => <BillerForm {...props} />
             } />
-            <Route exact path ="/payments/form/:billerId(\d+)" render={
+            <Route exact path="/payments/form/:billerId(\d+)" render={
                 props => <PaymentForm {...props} />
             } />
         </BillProvider>
