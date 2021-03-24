@@ -115,9 +115,22 @@ export const Homepage = (props) => {
                         if (envelope.user.key === localStorage.getItem('budget_user_id')) {
                             let totalSpent = 0
                             envelope.payment.forEach(payment => totalSpent += payment.amount)
-                            return <>
-                                <div className="text-center">${totalSpent} of ${envelope.budget}</div>
+                            if (totalSpent / envelope.budget < .8) {
+                                return <>
+                                    <div className="text-center">${totalSpent} of ${envelope.budget} in {envelope.name}</div>
+                                    <Progress animated value={totalSpent} max={envelope.budget} />
+                                </>
+                            } else if (totalSpent / envelope.budget >= .8  && totalSpent / envelope.budget < .9) {
+                                return <>
+                                    <div className="text-center">${totalSpent} of ${envelope.budget} in {envelope.name}</div>
+                                    <Progress animated color="warning" value={totalSpent} max={envelope.budget} />
+                                </>
+                            } else {
+                                return <>
+                                <div className="text-center">${totalSpent} of ${envelope.budget} in {envelope.name}</div>
+                                <Progress animated color="danger" value={totalSpent} max={envelope.budget} />
                             </>
+                            }
                         }
                     })
                 }
