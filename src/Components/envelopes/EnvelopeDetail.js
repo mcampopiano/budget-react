@@ -5,17 +5,17 @@ import {
     CardTitle, Button, ButtonGroup
 } from 'reactstrap';
 import { EnvelopeContext } from './EnvelopeProvider';
-import {formatDate} from '../DateFormatter'
+import { formatDate } from '../DateFormatter'
 
 export const EnvelopeDetail = (props) => {
     const history = useHistory()
     const [envelope, setEnvelope] = useState({})
-    const {deleteEnvelope, deletePurchase, getEnvelopeById, envelopes} = useContext(EnvelopeContext)
+    const { deleteEnvelope, deletePurchase, getEnvelopeById, envelopes } = useContext(EnvelopeContext)
 
 
     useEffect(() => {
         getEnvelopeById(props.match.params.envelopeId)
-        .then(setEnvelope)
+            .then(setEnvelope)
     }, [props.match.params.envelopeId, envelopes])
 
     return (
@@ -32,24 +32,28 @@ export const EnvelopeDetail = (props) => {
                     </thead>
                     <tbody>
                         {
-                            envelope.payment&&envelope.payment.map(expense => (
-                                <tr key={expense.id}>
-                                    <td>{expense.location}</td>
-                                    <td>${expense.amount}</td>
-                                    <td>{formatDate(expense.date)}</td>
-                                    <Button color="danger"
-                                    onClick={()=> {
-                                        if (window.confirm("Are you sure you want to delete this purchase? This action cannot be undone.")) {
-                                            deletePurchase(expense)
-                                        }
-                                    }}>X</Button>
-                                </tr>
-                            ))
+                            envelope.payment && envelope.payment.map(expense => {
+                                if (expense.budget === parseInt(localStorage.getItem("budgetId"))) {
+
+
+                                    return <tr key={expense.id}>
+                                        <td>{expense.location}</td>
+                                        <td>${expense.amount}</td>
+                                        <td>{formatDate(expense.date)}</td>
+                                        <Button color="danger"
+                                            onClick={() => {
+                                                if (window.confirm("Are you sure you want to delete this purchase? This action cannot be undone.")) {
+                                                    deletePurchase(expense)
+                                                }
+                                            }}>X</Button>
+                                    </tr>
+                                }
+                            })
                         }
                     </tbody>
                 </Table>
                 <Button color="success"
-                onClick={() => history.push("/envelopes/purchase/form", {chosenEnvelope: envelope})}>Add purchase</Button>
+                    onClick={() => history.push("/envelopes/purchase/form", { chosenEnvelope: envelope })}>Add purchase</Button>
             </section>
             <section className="totals">
                 <Card>
@@ -67,17 +71,17 @@ export const EnvelopeDetail = (props) => {
                 <Card>
                     <CardTitle tag="h5">Remaining</CardTitle>
                     <CardBody>
-                        <CardText>${envelope.budget-envelope.total}</CardText>
+                        <CardText>${envelope.budget - envelope.total}</CardText>
                     </CardBody>
                 </Card>
             </section>
             <ButtonGroup>
                 <Button color="danger"
-                onClick={() => {
-                    if (window.confirm("Are you sure you want to delete? This cannot be undone")) deleteEnvelope(envelope).then(history.push("/"))
-                }}>Delete envelope</Button>
+                    onClick={() => {
+                        if (window.confirm("Are you sure you want to delete? This cannot be undone")) deleteEnvelope(envelope).then(history.push("/"))
+                    }}>Delete envelope</Button>
                 <Button color="secondary"
-                onClick={() => props.history.push(`/envelopes/form/${envelope.id}`, {chosenEnvelope: envelope})}>Edit envelope
+                    onClick={() => props.history.push(`/envelopes/form/${envelope.id}`, { chosenEnvelope: envelope })}>Edit envelope
                 </Button>
             </ButtonGroup>
         </div>
