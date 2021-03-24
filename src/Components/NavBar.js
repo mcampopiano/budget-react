@@ -40,6 +40,9 @@ export const NavBar = () => {
                             <NavLink href="/budgets/form">New Budget</NavLink>
                         </NavItem>
                         <NavItem>
+                            <NavLink href="/budgets/saved">Saved Budgets</NavLink>
+                        </NavItem>
+                        <NavItem>
                             <NavLink href="/bills">Recurring Bills</NavLink>
                         </NavItem>
                         <UncontrolledDropdown nav inNavbar>
