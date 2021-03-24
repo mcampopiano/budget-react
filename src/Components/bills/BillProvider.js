@@ -37,9 +37,19 @@ export const BillProvider = props => {
         })
     }
 
+    const removePayment = paymentId => {
+        return fetch(`http://localhost:8000/recurring/${paymentId}`, {
+            method: 'DELETE',
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("budget_user_id")}`
+            }
+        })
+        .then(getBills)
+    }
+
 
     return (
-        <BillContext.Provider value={{bills, setBills, getBills, addBiller, addPayment}}>
+        <BillContext.Provider value={{bills, setBills, getBills, addBiller, addPayment, removePayment}}>
             {props.children}
         </BillContext.Provider>
     )
