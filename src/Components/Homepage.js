@@ -85,25 +85,25 @@ export const Homepage = (props) => {
                         <Card className="budget--item">
                             <CardTitle tag="h5">Total Budget</CardTitle>
                             <CardBody>
-                                <CardText>${currentBudget.total_budget.toFixed(2)}</CardText>
+                                <CardText>${currentBudget.total_budget}</CardText>
                             </CardBody>
                         </Card>
                         <Card className="budget--item">
                             <CardTitle tag="h5">Total spent</CardTitle>
                             <CardBody>
-                                <CardText>${currentBudget.total_spent.toFixed(2)}</CardText>
+                                <CardText>${currentBudget.total_spent}</CardText>
                             </CardBody>
                         </Card>
                         <Card className="budget--item">
                             <CardTitle tag="h5">Remaing budget</CardTitle>
                             <CardBody>
-                                <CardText>${currentBudget.remaining_budget.toFixed(2)}</CardText>
+                                <CardText>${currentBudget.remaining_budget}</CardText>
                             </CardBody>
                         </Card>
                         <Card className="budget--item">
                             <CardTitle tag="h5">Net total</CardTitle>
                             <CardBody>
-                                <CardText>${currentBudget.net_total.toFixed(2)}</CardText>
+                                <CardText>${currentBudget.net_total}</CardText>
                             </CardBody>
                         </Card>
                     </section>
