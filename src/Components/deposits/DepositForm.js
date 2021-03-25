@@ -40,7 +40,7 @@ export const DepositForm = (props) => {
                 <Input type="date" name="date" id="depositDate" onChange={handleControlledInputChange}/>
             </FormGroup>
 
-            <ButtonGroup>
+            <ButtonGroup className="form--btns">
                 <Button color="success"
                 onClick={constructDeposit}>Submit</Button>
                 <Button color="danger" onClick={() => history.goBack()}>Cancel</Button>

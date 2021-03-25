@@ -35,7 +35,7 @@ export const BillerForm = (props) => {
                 <Input type="number" name="dueDate" id="dueDate" value={biller.dueDate} onChange={handleControlledInputChange} />
             </FormGroup>
     
-            <ButtonGroup>
+            <ButtonGroup className="form--btns">
                 <Button color="success"
                     onClick={constructBiller}>{editMode ? "Save changes" : "Submit"}</Button>
                 <Button color="danger" onClick={() => props.history.goBack()}>Cancel</Button>

@@ -59,7 +59,7 @@ return (
             <Input type="number" name="budget" id="exampleBudgetAmount" value={envelope.budget} onChange={handleControlledInputChange} />
         </FormGroup>
 
-        <ButtonGroup>
+        <ButtonGroup className="form--btns">
             <Button color="success"
                 onClick={constructEnvelope}>{editMode ? "Save changes" : "Submit"}</Button>
             <Button color="danger" onClick={() => history.goBack()}>Cancel</Button>

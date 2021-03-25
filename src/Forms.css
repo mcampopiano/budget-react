@@ -1,0 +1,21 @@
+form {
+    position: absolute;
+    width: 250px;
+    opacity: 75%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,05);
+    border-radius: 5px;
+    top: 20%;
+    left: 40%
+}
+
+.form--btns {
+    margin: auto;
+    width: fit-content;
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.btn {
+    width: fit-content;
+}
