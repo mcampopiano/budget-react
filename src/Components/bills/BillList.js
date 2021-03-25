@@ -20,30 +20,8 @@ export const BillList = (props) => {
     }, [])
 
     return (
-        <>
-        <header className="bills--header">
-            <h1>Recurring Bills</h1>
-            <section className="bills--totals">
-                <Card className="totals--card">
-                    <CardTitle tag="h5">Budget</CardTitle>
-                    <CardBody>
-                        <CardText>${totalBudget}</CardText>
-                    </CardBody>
-                </Card>
-                <Card className="totals--card">
-                    <CardTitle tag="h5">Actual</CardTitle>
-                    <CardBody>
-                        <CardText>${actualSpent}</CardText>
-                    </CardBody>
-                </Card>
-                <Card className="totals--card">
-                    <CardTitle tag="h5">Remaining</CardTitle>
-                    <CardBody>
-                        <CardText>${(totalBudget - actualSpent).toFixed(2)}</CardText>
-                    </CardBody>
-                </Card>
-            </section>
-            </header>
+        <div className="bills-container">
+
             <section className="table">
                 <Table hover>
                     <thead>
@@ -62,7 +40,6 @@ export const BillList = (props) => {
 
 
                                     totalBudget += bill.expected_amount
-
 
                                     return <tr key={bill.id}>
                                         <td>{bill.biller}</td>
@@ -98,11 +75,35 @@ export const BillList = (props) => {
                                 }
                             })
                         }
+
                     </tbody>
                 </Table>
                 <Button color="success" onClick={() => props.history.push("/bills/form")}>Add biller</Button>
             </section>
+            <header className="bills--header">
+                <h1>Recurring Bills</h1>
+                <section className="bills--totals">
+                    <Card className="totals--card">
+                        <CardTitle tag="h5">Budget</CardTitle>
+                        <CardBody>
+                            <CardText>${totalBudget}</CardText>
+                        </CardBody>
+                    </Card>
+                    <Card className="totals--card">
+                        <CardTitle tag="h5">Actual</CardTitle>
+                        <CardBody>
+                            <CardText>${actualSpent}</CardText>
+                        </CardBody>
+                    </Card>
+                    <Card className="totals--card">
+                        <CardTitle tag="h5">Remaining</CardTitle>
+                        <CardBody>
+                            <CardText>${(totalBudget - actualSpent).toFixed(2)}</CardText>
+                        </CardBody>
+                    </Card>
+                </section>
+            </header>
 
-        </>
+        </div>
     )
 }
