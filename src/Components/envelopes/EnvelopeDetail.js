@@ -62,13 +62,13 @@ export const EnvelopeDetail = (props) => {
                                     return <tr key={expense.id}>
                                         <td>{expense.location}</td>
                                         <td>${expense.amount}</td>
-                                        <td>{formatDate(expense.date)}</td>
-                                        <Button color="danger"
+                                        <td>{formatDate(expense.date)} <Button color="danger"
                                             onClick={() => {
                                                 if (window.confirm("Are you sure you want to delete this purchase? This action cannot be undone.")) {
                                                     deletePurchase(expense)
                                                 }
-                                            }}>X</Button>
+                                            }}>X</Button></td>
+
                                     </tr>
                                 }
                             })
