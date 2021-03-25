@@ -1,0 +1,8 @@
+.bills--totals, .bills--header {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.bills--header h1 {
+    margin: auto;
+}
