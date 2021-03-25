@@ -36,7 +36,7 @@ export const PaymentForm = (props) => {
                 <Input type="date" name="datePaid" id="datePaid" onChange={handleControlledInputChange} />
             </FormGroup>
     
-            <ButtonGroup>
+            <ButtonGroup className="form--btns">
                 <Button color="success"
                     onClick={constructPayment}>{editMode ? "Save changes" : "Submit"}</Button>
                 <Button color="danger" onClick={() => props.history.goBack()}>Cancel</Button>

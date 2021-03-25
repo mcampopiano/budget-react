@@ -30,7 +30,7 @@ export const BudgetForm = () => {
                 <Label for="income">Estimated monthly income</Label>
                 <Input  type="number" innerRef={income} id="income" />
             </FormGroup>
-            <ButtonGroup>
+            <ButtonGroup className="form--btns">
                 <Button color="success" onClick={constructNewBudget}>Submit</Button>
                 <Button color="danger" onClick={() => history.goBack()}>Cancel</Button>
             </ButtonGroup>

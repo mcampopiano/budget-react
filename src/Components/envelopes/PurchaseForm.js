@@ -41,7 +41,7 @@ export const PurchaseForm = (props) => {
                 <Input type="date" name="date" id="dateOfPurchase" placeholder="e.g. 400.00" onChange={handleControlledInputChange}/>
             </FormGroup>
 
-            <ButtonGroup>
+            <ButtonGroup className="form--btns">
                 <Button color="success"
                 onClick={constructPurchase}
                 >Submit</Button>
