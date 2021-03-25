@@ -6,6 +6,7 @@ import {
 } from 'reactstrap';
 import { EnvelopeContext } from './EnvelopeProvider';
 import { formatDate } from '../DateFormatter'
+import "./Envelope.css"
 
 export const EnvelopeDetail = (props) => {
     const history = useHistory()
@@ -20,7 +21,29 @@ export const EnvelopeDetail = (props) => {
 
     return (
         <div className="table envelope">
-            <h1>{envelope.name}</h1>
+            <header className="envelope--header">
+                <h1>{envelope.name}</h1>
+                <section className="totals--envelope">
+                    <Card className="envelope--card">
+                        <CardTitle tag="h5">Budget</CardTitle>
+                        <CardBody>
+                            <CardText>${envelope.budget}</CardText>
+                        </CardBody>
+                    </Card>
+                    <Card className="envelope--card">
+                        <CardTitle tag="h5">Actual</CardTitle>
+                        <CardBody>
+                            <CardText>${envelope.total}</CardText>
+                        </CardBody>
+                    </Card>
+                    <Card className="envelope--card">
+                        <CardTitle tag="h5">Remaining</CardTitle>
+                        <CardBody>
+                            <CardText>${envelope.budget - envelope.total}</CardText>
+                        </CardBody>
+                    </Card>
+                </section>
+            </header>
             <section className="entries">
                 <Table hover>
                     <thead>
@@ -55,34 +78,15 @@ export const EnvelopeDetail = (props) => {
                 <Button color="success"
                     onClick={() => history.push("/envelopes/purchase/form", { chosenEnvelope: envelope })}>Add purchase</Button>
             </section>
-            <section className="totals">
-                <Card>
-                    <CardTitle tag="h5">Budget</CardTitle>
-                    <CardBody>
-                        <CardText>${envelope.budget}</CardText>
-                    </CardBody>
-                </Card>
-                <Card>
-                    <CardTitle tag="h5">Actual</CardTitle>
-                    <CardBody>
-                        <CardText>${envelope.total}</CardText>
-                    </CardBody>
-                </Card>
-                <Card>
-                    <CardTitle tag="h5">Remaining</CardTitle>
-                    <CardBody>
-                        <CardText>${envelope.budget - envelope.total}</CardText>
-                    </CardBody>
-                </Card>
-            </section>
-            <ButtonGroup>
+
+            <ButtonGroup className="envelope--btns">
+                <Button color="secondary"
+                    onClick={() => props.history.push(`/envelopes/form/${envelope.id}`, { chosenEnvelope: envelope })}>Edit envelope
+                </Button>
                 <Button color="danger"
                     onClick={() => {
                         if (window.confirm("Are you sure you want to delete? This cannot be undone")) deleteEnvelope(envelope).then(history.push("/"))
                     }}>Delete envelope</Button>
-                <Button color="secondary"
-                    onClick={() => props.history.push(`/envelopes/form/${envelope.id}`, { chosenEnvelope: envelope })}>Edit envelope
-                </Button>
             </ButtonGroup>
         </div>
     );

@@ -1,0 +1,18 @@
+.totals--envelope, .envelope--header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.envelope--header h1{
+    margin: auto;
+}
+
+.envelope--btns {
+    /* display: flex; */
+    margin-left: 81%;
+}
+
+.envelope--card {
+    padding: 5px;
+    text-align: center;
+}
