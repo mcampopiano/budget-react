@@ -6,7 +6,6 @@ import {
 import { BudgetContext } from './BudgetProvider';
 
 export const BudgetList = (props) => {
-    // const [budget, setBudget] = useState({})
     const { getBudgets, getBudgetById, budgets } = useContext(BudgetContext)
 
 

@@ -53,7 +53,7 @@ export const Homepage = (props) => {
                                             <td>{formatDate(deposit.date)}</td>
                                             <Button color="danger"
                                                 onClick={() => {
-                                                    if (window.confirm("Are you sure you want to delete this purchase? This action cannot be undone.")) {
+                                                    if (window.confirm("Are you sure you want to delete? This action cannot be undone.")) {
                                                         deleteDeposit(deposit)
                                                     }
                                                 }}>X</Button>
