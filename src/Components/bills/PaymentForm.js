@@ -7,8 +7,13 @@ export const PaymentForm = (props) => {
     const {addPayment} = useContext(BillContext)
     const [payment, setPayment] = useState({amount: 0, datePaid: 0})
 
+    /* Edit mode is not currently implemented, but this variable is here so the conditional logic 
+    for the save button can be put in place without an error.*/
     const editMode = false
 
+    /* This function is used to set the state of the payment object when this is called.
+    It is called on change of the input fields, and sets the value of key corresponding with
+    the name on the input to the value of the input.*/
     const handleControlledInputChange = e => {
         const newPayment = Object.assign({}, payment)
         newPayment[e.target.name] = e.target.value

@@ -18,7 +18,10 @@ export const Homepage = (props) => {
     const budgetId = localStorage.getItem("budgetId")
     const [currentBudget, setBudget] = useState({})
 
-
+    /* When new deposits are deleted the page doesn't rerender, so this use effect needs 
+    to be called everytime the state of deposits changes so the data rendered to the DOM is
+    a representation of the current state of the database. Otherwise, the deleted payment
+    data will continue to render until the page is refreshed.*/
     useEffect(() => {
         getBudgetById(budgetId)
             .then(setBudget)
@@ -114,6 +117,8 @@ export const Homepage = (props) => {
                 {
                     envelopes.map(envelope => {
                         if (envelope.user.key === localStorage.getItem('budget_user_id')) {
+                            /* initialize totalSpent to 0, then, if the payment attached to the envelope
+                            also matches the current budget, add it's amount to totalSpent*/
                             let totalSpent = 0
                             envelope.payment.forEach(payment => {
                                 if (payment.budget === parseInt(localStorage.getItem('budgetId'))) {
@@ -121,6 +126,7 @@ export const Homepage = (props) => {
                                     totalSpent += payment.amount
                                 }
                             })
+                            // Change the color on the progress bar based on the percentage of the budget spent
                             if (totalSpent / envelope.budget < .8) {
                                 return <>
                                     <div className="text-center">${totalSpent} of ${envelope.budget} in {envelope.name}</div>

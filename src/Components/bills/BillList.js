@@ -11,6 +11,7 @@ import "./Bills.css"
 export const BillList = (props) => {
     const { bills, getBills, removePayment } = useContext(BillContext)
 
+    // Initialize to 0, increment values with each iteration of the map of bills
     let totalBudget = 0
     let actualSpent = 0
 
@@ -46,6 +47,8 @@ export const BillList = (props) => {
                                         <td>${bill.expected_amount}</td>
                                         <td>{bill.due_date}</td>
                                         {
+                                            /* If there is a payment in the payment array, render the data
+                                            for the payment. Otherwise, render a button for adding payments*/
                                             bill.payments.length > 0
                                                 ? bill.payments.map(payment => {
                                                     if (payment.budget === parseInt(localStorage.getItem("budgetId"))) {

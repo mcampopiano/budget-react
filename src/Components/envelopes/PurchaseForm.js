@@ -10,6 +10,9 @@ export const PurchaseForm = (props) => {
     const budgetId = localStorage.getItem("budgetId")
     const [purchase, setPurchase] = useState({budgetId: budgetId, location: "", amount:0, date: ""})
 
+    /* This function is used to set the state of the purchase object when this is called.
+    It is called on change of the input fields, and sets the value of key corresponding with
+    the name on the input to the value of the input.*/
     const handleControlledInputChange = e => {
         const newPurchase = Object.assign({}, purchase)
         newPurchase[e.target.name] = e.target.value

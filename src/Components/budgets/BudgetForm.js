@@ -10,6 +10,9 @@ export const BudgetForm = () => {
     const date = useRef(null)
     const income = useRef(null)
 
+    /* In the .thens, convert the newly created json formatted data which is returned in the response to the POST request
+    into an object then take that objects id and set in in local storage before rerouting to the
+    homepage.  */
     const constructNewBudget = () => {
         const [year, month] = date.current.value.split("-")
        createBudget({

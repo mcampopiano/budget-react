@@ -18,6 +18,9 @@ export const EnvelopeProvider = props => {
         .then(setEnvelopes)
     }
 
+    /* When getting envelope by id, the server needs to have the relevant budget id
+    to filter payments related to envelopes for ones that are connected to the relevant budget.
+    The budget id is passed as a query paramater.*/
     const getEnvelopeById = envelopeId => {
         return fetch(`http://localhost:8000/envelopes/${envelopeId}?budgetId=${localStorage.getItem('budgetId')}`, {
             headers: {

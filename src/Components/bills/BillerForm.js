@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useHistory } from 'react-router';
 import { Button, Form, FormGroup, Label, Input, ButtonGroup } from 'reactstrap';
 import { BillContext } from './BillProvider';
 
@@ -9,6 +8,9 @@ export const BillerForm = (props) => {
 
     const editMode = false
 
+    /* This function is used to set the state of the biller object when this is called.
+    It is called on change of the input fields, and sets the value of key corresponding with
+    the name on the input to the value of the input.*/
     const handleControlledInputChange = e => {
         const newBiller = Object.assign({}, biller)
         newBiller[e.target.name] = e.target.value
