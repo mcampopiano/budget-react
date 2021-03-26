@@ -19,7 +19,7 @@ export const EnvelopeProvider = props => {
     }
 
     const getEnvelopeById = envelopeId => {
-        return fetch(`http://localhost:8000/envelopes/${envelopeId}`, {
+        return fetch(`http://localhost:8000/envelopes/${envelopeId}?budgetId=${localStorage.getItem('budgetId')}`, {
             headers: {
                 "Authorization": `Token ${localStorage.getItem("budget_user_id")}`
             }
