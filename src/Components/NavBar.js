@@ -50,6 +50,8 @@ export const NavBar = () => {
                                 Envelopes
               </DropdownToggle>
                             <DropdownMenu right>
+                                {/* Map through all of the envelopes so the dropdown menu has access to 
+                                them. */}
                                 {
                                     envelopes.map(envelope => {
                                         if (envelope.user.key === localStorage.getItem('budget_user_id')) {

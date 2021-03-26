@@ -8,8 +8,13 @@ export const EnvelopeForm = (props) => {
     const { createEnvelope, getEnvelopes, editEnvelope, envelopes } = useContext(EnvelopeContext)
     const [envelope, setEnvelope] = useState({ name: "", budget: 0 })
 
+    /* If the match method from react router dom has the property of envelopeId, the user routed to this
+     page via an edit button*/
     const editMode = props.match.params.hasOwnProperty("envelopeId")
 
+    /* This function is used to set the state of the envelope object when this is called.
+    It is called on change of the input fields, and sets the value of key corresponding with
+    the name on the input to the value of the input.*/
     const handleControlledInputChange = e => {
         const newEnvelope = Object.assign({}, envelope)
         newEnvelope[e.target.name] = e.target.value

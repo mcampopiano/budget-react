@@ -13,6 +13,8 @@ function App() {
       <Route render={() => {
         if (localStorage.getItem("budget_user_id")) {
           return <>
+          {/* wrap everything in envelope provider since NavBar needs access to it. If a separate 
+          provider was invoked in application views, the state changes would be specific to that provider. */}
             <EnvelopeProvider>
               <NavBar />
               <ApplicationViews />

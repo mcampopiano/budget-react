@@ -13,7 +13,9 @@ export const EnvelopeDetail = (props) => {
     const [envelope, setEnvelope] = useState({})
     const { deleteEnvelope, deletePurchase, getEnvelopeById, envelopes } = useContext(EnvelopeContext)
 
-
+    /* Deleting a payment alters the state of envelopes, but does not change the url. 
+    This useEffect is wathching the state of envelopes and will run every time that changes
+    so that the data rendered to the DOM represents the actual state of the database.*/
     useEffect(() => {
         getEnvelopeById(props.match.params.envelopeId)
             .then(setEnvelope)
