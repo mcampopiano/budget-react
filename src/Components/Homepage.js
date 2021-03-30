@@ -17,6 +17,19 @@ export const Homepage = (props) => {
     const history = useHistory()
     const budgetId = localStorage.getItem("budgetId")
     const [currentBudget, setBudget] = useState({})
+    
+    const generateAlert = () => {
+       const relatedEnvelopes = []
+       envelopes.map(envelope => {
+           if (envelope.user.key === localStorage.getItem('budget_user_id')) {
+               relatedEnvelopes.push(envelope)
+           }
+           if (relatedEnvelopes.length === 0) {
+               window.alert('this works')
+           }
+       })
+        }
+    
 
     /* When new deposits are deleted the page doesn't rerender, so this use effect needs 
     to be called everytime the state of deposits changes so the data rendered to the DOM is
@@ -31,6 +44,9 @@ export const Homepage = (props) => {
         getEnvelopes()
     }, [])
 
+    useEffect(() => {
+        generateAlert()
+    }, [])
 
     return (
         <>
