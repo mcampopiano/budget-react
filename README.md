@@ -32,4 +32,11 @@ Once the user has completed and submitted the form, they will be redirected to a
 On the details page the user can see the budget amount, actual amount spent in that category for the month, and remaining budget for the month. There is also a table showing all payments for the month in that envelope, with location, amount, and date. From this detail page the user can edit or delete the envelope, and add and delete payments.
 
 ### Adding purchases to an envelope
-While a user is viewing an envelope details page, they can select the *add payment* 
+While a user is viewing an envelope details page, they can select the *add payment* button, which will redirect the user to a form with the following input fields:
+* Location
+* Amount
+* Date
+Once the user has completed and submitted the form, they will be redirected to the relevant envelope detail page, and the data for the newly recorded purchase will be rendered in the purchases table.
+
+### Deleting purchases
+Once a purchase has been recorded to an envelope, the purchase data will be rendered as a line in a purchases table in the envelope detail page. At the end of this line is an *X* button, which, when clicked, will prompt a confirmation window. If confirmed, the purchase will be deleted.
