@@ -10,35 +10,41 @@ import { EnvelopeProvider } from './Components/envelopes/EnvelopeProvider';
 function App() {
   return (
     <>
-      <Route render={() => {
-        if (localStorage.getItem("budget_user_id")) {
-          return <>
-          {/* wrap everything in envelope provider since NavBar needs access to it. If a separate 
+      <EnvelopeProvider>
+        <Route render={() => {
+          if (localStorage.getItem("budget_user_id") && localStorage.getItem('budgetId')) {
+            return <>
+              {/* wrap everything in envelope provider since NavBar needs access to it. If a separate 
           provider was invoked in application views, the state changes would be specific to that provider. */}
-            <EnvelopeProvider>
               <NavBar />
               <ApplicationViews />
-            </EnvelopeProvider>
-          </>
-        } else {
-          return <Redirect to="/login" />
-        }
-      }} />
+            </>
+          } else if (localStorage.getItem('budget_user_id')) {
+            return <>
+              <ApplicationViews />
+              <Redirect to="/budgets/form" />
+            </>
+          }
+          else {
+            return <Redirect to="/login" />
+          }
+        }} />
 
-      <Route path="/login" render={() => {
-        if (localStorage.getItem("budget_user_id")) {
-          return <Redirect to="/" />
-        } else {
-          return <Login />
-        }
-      }} />
-      <Route path="/register" render={() => {
-        if (localStorage.getItem("budget_user_id")) {
-          return <Redirect to="/" />
-        } else {
-          return <Register />
-        }
-      }} />
+        <Route path="/login" render={() => {
+          if (localStorage.getItem("budget_user_id")) {
+            return <Redirect to="/" />
+          } else {
+            return <Login />
+          }
+        }} />
+        <Route path="/register" render={() => {
+          if (localStorage.getItem("budget_user_id")) {
+            return <Redirect to="/" />
+          } else {
+            return <Register />
+          }
+        }} />
+      </EnvelopeProvider>
     </>
   );
 }
