@@ -1,71 +1,77 @@
-# Getting Started with Create React App
+# Budget
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
+Budget is an app designed for those who want to use an envelope style budget system but don't want to use cash. The bugdet app provides a way to track spending digitally and visualize relevant information at a glance.
 
-## Available Scripts
+## Installations
+Run the following commands in the terminal
 
-In the project directory, you can run:
+```
+git clone git@github.com:mcampopiano/budget-react.git
+cd budget-react
+npm install
+npm start
+```
+The final command will run the app at localhost:3000.
+Follow instructions [here](https://github.com/mcampopiano/budget-python) for running the server at localhost:8000.
 
-### `npm start`
+## Using the app
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Registering new users
+When a new user registers an account, they will be redirected to a form for creating a new budget. The user will select the month and year for the budet, and enter an expected income for the month. Once the form is completed, they will be redirected to the homepage.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Creating envelopes
+Once a user is authenticated, on the nav bar they will see an option labeled "envelopes." After selecting this option, a dropdown menu will render with a list of all previously created envelopes with the final option being *create new envelope*. If The use has not created any envelopes, only the *create new envelope* option will render.
 
-### `npm test`
+After selecting *create new envelpe*, the user will be redirected to a form with the following inputs:
+* Name (e.g. groceries, restaurants, etc.)
+* Monthly budget
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Once the user has completed and submitted the form, they will be redirected to a details page for the newly created envelope. They can also navigate to this details page for existing envelopes by selecting them from the envelopes dropdown button on the navbar.
 
-### `npm run build`
+On the details page the user can see the budget amount, actual amount spent in that category for the month, and remaining budget for the month. There is also a table showing all payments for the month in that envelope, with location, amount, and date. From this detail page the user can edit or delete the envelope, and add and delete payments.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Adding purchases to an envelope
+While a user is viewing an envelope details page, they can select the *add payment* button, which will redirect the user to a form with the following input fields:
+* Location
+* Amount
+* Date
+Once the user has completed and submitted the form, they will be redirected to the relevant envelope detail page, and the data for the newly recorded purchase will be rendered in the purchases table.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Deleting purchases
+Once a purchase has been recorded to an envelope, the purchase data will be rendered as a line in a purchases table in the envelope detail page. At the end of this line is an *X* button, which, when clicked, will prompt a confirmation window. If confirmed, the purchase will be deleted.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Recurring bills
+To navigate to the recurring bills page, users select *Recurring bills* from the nav bar. The recurring bills page shows a table with columns for:
+* Biller
+* Expected amount
+* Due date
+* Actual amount
+* Date paid
+If the bill has not been paid yet, instead of dsiplaying actual amount and date paid a button for adding payment will render.
+The page also displays the total budget, actual spent, and remaining budget for recurring bills.
 
-### `npm run eject`
+### Adding a biller
+While viewing the recurring bills page, click the *Add biller* button, which redirects the user to a form with the following input fields:
+* Name
+* Expected amount
+* Due date
+Once the form is completed and submitted, the user will be redirected to the recurring bills page, and the new bill will be rendered in the bills table.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Recoring bill payment
+When a recurring bill has been created and no payment is yet recorded, an *Add payment* button will render at the end of the bill line in the table. When the user clicks the button, they will be redirected to a form with the following input fields:
+* Amount
+* Date paid
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Deleting payments
+Once a payment has been recorded to a bill, the payment data will be rendered as a line in the bill table in the recurring bill page. At the end of this line is an *X* button, which, when clicked, will prompt a confirmation window. If confirmed, the payment will be deleted.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Recording deposits
+On the homepage, there is a table for income with columns for:
+* Source
+* Amount
+* Date
+To record a deposit, users click the *Add deposit* button beneath the income table, which redirects the user to a form with input fields to match teh income table columns. Once the form is completed and submitted, the user will be returned to the homepage, and the deposit data will be rendered to the income table.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# budget-react
+### Deleting deposits
+Once a deposit is recorded, at the end of it's line in the income table an *X* button will render, which when clicked will prompt a confirmation window. If confirmed, the deposit will be removed.
