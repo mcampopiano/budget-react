@@ -17,7 +17,7 @@ Follow instructions [here](https://github.com/mcampopiano/budget-python) for run
 
 ## Using the app
 
-### Registering new user
+### Registering new users
 When a new user registers an account, they will be redirected to a form for creating a new budget. The user will select the month and year for the budet, and enter an expected income for the month. Once the form is completed, they will be redirected to the homepage.
 
 ### Creating envelopes
@@ -40,3 +40,28 @@ Once the user has completed and submitted the form, they will be redirected to t
 
 ### Deleting purchases
 Once a purchase has been recorded to an envelope, the purchase data will be rendered as a line in a purchases table in the envelope detail page. At the end of this line is an *X* button, which, when clicked, will prompt a confirmation window. If confirmed, the purchase will be deleted.
+
+### Recurring bills
+To navigate to the recurring bills page, users select *Recurring bills* from the nav bar. The recurring bills page shows a table with columns for:
+* Biller
+* Expected amount
+* Due date
+* Actual amount
+* Date paid
+If the bill has not been paid yet, instead of dsiplaying actual amount and date paid a button for adding payment will render.
+The page also displays the total budget, actual spent, and remaining budget for recurring bills.
+
+### Adding a biller
+While viewing the recurring bills page, click the *Add biller* button, which redirects the user to a form with the following input fields:
+* Name
+* Expected amount
+* Due date
+Once the form is completed and submitted, the user will be redirected to the recurring bills page, and the new bill will be rendered in the bills table.
+
+### Recoring bill payment
+When a recurring bill has been created and no payment is yet recorded, an *Add payment* button will render at the end of the bill line in the table. When the user clicks the button, they will be redirected to a form with the following input fields:
+* Amount
+* Date paid
+
+### Deleting payments
+Once a payment has been recorded to a bill, the payment data will be rendered as a line in the bill table in the recurring bill page. At the end of this line is an *X* button, which, when clicked, will prompt a confirmation window. If confirmed, the payment will be deleted.
