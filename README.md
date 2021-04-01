@@ -65,3 +65,13 @@ When a recurring bill has been created and no payment is yet recorded, an *Add p
 
 ### Deleting payments
 Once a payment has been recorded to a bill, the payment data will be rendered as a line in the bill table in the recurring bill page. At the end of this line is an *X* button, which, when clicked, will prompt a confirmation window. If confirmed, the payment will be deleted.
+
+### Recording deposits
+On the homepage, there is a table for income with columns for:
+* Source
+* Amount
+* Date
+To record a deposit, users click the *Add deposit* button beneath the income table, which redirects the user to a form with input fields to match teh income table columns. Once the form is completed and submitted, the user will be returned to the homepage, and the deposit data will be rendered to the income table.
+
+### Deleting deposits
+Once a deposit is recorded, at the end of it's line in the income table an *X* button will render, which when clicked will prompt a confirmation window. If confirmed, the deposit will be removed.
